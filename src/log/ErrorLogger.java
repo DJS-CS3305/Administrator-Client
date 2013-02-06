@@ -19,7 +19,7 @@ public class ErrorLogger extends AbstractLogger {
      * @throws FileNotFoundException 
      */
     private ErrorLogger() throws FileNotFoundException, IOException {
-        super(FILEPATH, SEVERITY);
+        super(FILEPATH, SEVERITY); 
     }
     
     /**
