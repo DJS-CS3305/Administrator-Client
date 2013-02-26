@@ -1,5 +1,7 @@
 package net;
 
+import java.net.Socket;
+
 /**
  * Connects to the server backend and tries to access it through the
  * authenticator.
@@ -7,21 +9,28 @@ package net;
  * @author Stephen Fahy
  */
 public class Connector {
-    //connection info
+    private static final String DEFAULT_URL = "";
+    private static final int DEFAULT_AUTH_PORT = 579;
+    private static Socket SOCKET;
+    
     
     /**
-     * Tries to connect to the machine with the given details.
+     * Tries to connect to the server with the given details.
      * 
-     * @param url
-     * @param port
      * @param username
-     * @param passwordHash
+     * @param password
      * @return True if connected successfully.
      */
-    private static boolean connect(String url, int port, String username,
-            String passwordHash) {
-        return false;
+    private static boolean connect(String username, String password) {
+        boolean output = false;
+        
+        
+        
+        return output;
     }
     
-    //get connection info
+    //getters
+    public static Socket getSocket() {
+        return SOCKET;
+    }
 }

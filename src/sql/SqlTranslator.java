@@ -1,7 +1,7 @@
 package sql;
 
 /**
- * Translates returned SQL results into other data structures.
+ * Translates inputted data into SQL queries.
  * 
  * @author Stephen Fahy
  */
