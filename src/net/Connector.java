@@ -2,6 +2,7 @@ package net;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.InetAddress;
 import java.net.Socket;
 import java.security.MessageDigest;
 import log.ErrorLogger;
@@ -13,9 +14,8 @@ import log.ErrorLogger;
  * @author Stephen Fahy
  */
 public class Connector {
-    private static final String DEFAULT_IP = "localhost";
+    //private static final String DEFAULT_IP = "localhost";
     private static final int DEFAULT_AUTH_PORT = 579;
-    private static final int TIMEOUT = 500000;
     private static AdminClientSocket SOCKET;
     
     /**
@@ -29,29 +29,26 @@ public class Connector {
         boolean output = false;
         
         try {
-            Socket authSocket = new Socket(DEFAULT_IP, DEFAULT_AUTH_PORT);
-            ObjectInputStream authIn = new ObjectInputStream(authSocket.getInputStream());
+            //Socket authSocket = new Socket(DEFAULT_IP, DEFAULT_AUTH_PORT);
+            Socket authSocket = new Socket(InetAddress.getLocalHost(), DEFAULT_AUTH_PORT);
             ObjectOutputStream authOut = new ObjectOutputStream(authSocket.getOutputStream());
-            MessageDigest md = MessageDigest.getInstance("SHA-256");
-            md.update(password.getBytes("UTF-8"));
-            byte[] digest = md.digest();
-            String passhash = new String(digest);
+            authOut.flush();
+            String passhash = encrypt(password);
             AuthMessage auth = new AuthMessage(0, username, passhash);
-            int timer = 0;
             
             auth.send(authOut);
+            authOut.flush();
             
-            while(authIn.available() == 0 && timer < TIMEOUT) {
-                //wait until a reply from the server is received or timeout
-                timer++;
-            }
-            
+            ObjectInputStream authIn = new ObjectInputStream(authSocket.getInputStream());
             Message reply = (Message) authIn.readObject();
             
             if(reply instanceof ConnectionMessage) {
                 ConnectionMessage con = (ConnectionMessage) reply;
                 int port = (Integer) con.getContent().get(ConnectionMessage.PORT);
-                SOCKET = new AdminClientSocket(port, DEFAULT_IP);
+                //SOCKET = new AdminClientSocket(port, DEFAULT_IP);
+                SOCKET = new AdminClientSocket(port, InetAddress.getLocalHost().getHostAddress());
+                
+                output = true;
             }
             else if(reply instanceof AckMessage) {
                 //read nack, print error message to screen
@@ -69,6 +66,25 @@ public class Connector {
         }
         
         return output;
+    }
+    
+    /**
+     * Hashes a password in SHA-256 format.
+     * 
+     * @param password The password.
+     * @return The password's hash.
+     */
+    private static String encrypt(String password) throws Exception {
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        md.update(password.getBytes("UTF-8"));
+        byte[] digest = md.digest();
+        StringBuilder sb = new StringBuilder();
+        
+        for(byte b : digest) {
+            sb.append(String.format("%02x", b));
+        }
+        
+        return sb.toString();
     }
     
     //getters

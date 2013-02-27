@@ -1,5 +1,7 @@
 package main;
 
+import test.*;
+
 /**
  * Main class of the administrator client.
  * 
@@ -7,6 +9,6 @@ package main;
  */
 public class Main {
     public static void main(String[] args) {
-        
+        ClientTest.test();
     }
 }

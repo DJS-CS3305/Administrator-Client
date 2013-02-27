@@ -1,5 +1,7 @@
 package net;
 
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
 import log.ErrorLogger;
 
@@ -10,8 +12,10 @@ import log.ErrorLogger;
  * 
  * @author Stephen Fahy
  */
-public class AdminClientSocket {
+public class AdminClientSocket extends Thread implements Runnable{
     private Socket socket;
+    private ObjectInputStream in;
+    private ObjectOutputStream out;
     
     /**
      * Constructor.
@@ -22,6 +26,18 @@ public class AdminClientSocket {
     public AdminClientSocket(int port, String ip) {
         try {
             socket = new Socket(ip, port);
+        }
+        catch(Exception e) {
+            ErrorLogger.get().log(e.toString());
+            e.printStackTrace();
+        }
+    }
+    
+    public void run() {
+        try {
+            out = new ObjectOutputStream(socket.getOutputStream());
+            out.flush();
+            in = new ObjectInputStream(socket.getInputStream());
         }
         catch(Exception e) {
             ErrorLogger.get().log(e.toString());
