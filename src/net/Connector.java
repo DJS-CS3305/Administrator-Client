@@ -8,26 +8,24 @@ import log.ErrorLogger;
 
 /**
  * Connects to the server backend and tries to access it through the
- * authenticator.
+ * authenticator. Creates an AdminClientSocket if successful.
  * 
  * @author Stephen Fahy
  */
 public class Connector {
     private static final String DEFAULT_IP = "localhost";
     private static final int DEFAULT_AUTH_PORT = 579;
-    private static Socket SOCKET;
-    private static ObjectInputStream IN;
-    private static ObjectOutputStream OUT;
     private static final int TIMEOUT = 500000;
+    private static AdminClientSocket SOCKET;
     
     /**
-     * Tries to connect to the server with the given details.
+     * Tries to connect to the server with the given login details.
      * 
-     * @param username
-     * @param password
+     * @param username The user's username.
+     * @param password The password for the associated username.
      * @return True if connected successfully.
      */
-    private static boolean connect(String username, String password) {
+    public static boolean connect(String username, String password) {
         boolean output = false;
         
         try {
@@ -51,35 +49,30 @@ public class Connector {
             Message reply = (Message) authIn.readObject();
             
             if(reply instanceof ConnectionMessage) {
-                //setup socket
-                
-                IN = new ObjectInputStream(SOCKET.getInputStream());
-                OUT = new ObjectOutputStream(SOCKET.getOutputStream());
+                ConnectionMessage con = (ConnectionMessage) reply;
+                int port = (Integer) con.getContent().get(ConnectionMessage.PORT);
+                SOCKET = new AdminClientSocket(port, DEFAULT_IP);
             }
             else if(reply instanceof AckMessage) {
-                //read nack
+                //read nack, print error message to screen
             }
             else {
                 ErrorLogger.get().log("Unknown message received from server: " +
                         reply.toString());
+                //print error message to screen
             }
         }
         catch(Exception e) {
             ErrorLogger.get().log(e.toString());
             e.printStackTrace();
+            //print connection failed error message to screen
         }
         
         return output;
     }
     
     //getters
-    public static Socket getSocket() {
+    public static AdminClientSocket getSocket() {
         return SOCKET;
-    }
-    public static ObjectInputStream getIn() {
-        return IN;
-    }
-    public static ObjectOutputStream getOut() {
-        return OUT;
     }
 }

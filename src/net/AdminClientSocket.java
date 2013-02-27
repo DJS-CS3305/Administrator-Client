@@ -4,7 +4,9 @@ import java.net.Socket;
 import log.ErrorLogger;
 
 /**
- * Class for a net socket from an administrator client.
+ * Class for a net socket from an administrator client. This will make a 
+ * connection to the server's AdminServerSocket on a port and IP supplied by
+ * the Connector that the server's Authenticator has verified.
  * 
  * @author Stephen Fahy
  */
