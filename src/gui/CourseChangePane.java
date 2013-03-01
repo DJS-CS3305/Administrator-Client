@@ -5,16 +5,16 @@
 package gui;
 
 /**
- * Pane for allowing the editing of course information.
+ * Pane for allowing the editing of course information or adding new courses.
  * 
  * @author saf3
  */
-public class CourseEditPane extends javax.swing.JPanel {
+public class CourseChangePane extends javax.swing.JPanel {
 
     /**
      * Creates new form CourseEditPane
      */
-    public CourseEditPane() {
+    public CourseChangePane() {
         initComponents();
     }
 
@@ -29,8 +29,8 @@ public class CourseEditPane extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         commitButton = new javax.swing.JButton();
-        videoButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        insertVideoButton = new javax.swing.JButton();
+        insertImageButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         lecturerLabel = new javax.swing.JLabel();
         locationLabel = new javax.swing.JLabel();
@@ -48,21 +48,25 @@ public class CourseEditPane extends javax.swing.JPanel {
         feeField = new javax.swing.JTextField();
         euroSign = new javax.swing.JLabel();
         locationField = new javax.swing.JTextField();
-        lecturerField = new javax.swing.JTextField();
         capacityField = new javax.swing.JTextField();
         descriptionScrollPane = new javax.swing.JScrollPane();
         descriptionField = new javax.swing.JTextArea();
+        timeLabel = new javax.swing.JLabel();
+        hoursField = new javax.swing.JTextField();
+        colonLabel = new javax.swing.JLabel();
+        minutesField = new javax.swing.JTextField();
+        lecturerField = new javax.swing.JComboBox();
 
         setPreferredSize(new java.awt.Dimension(640, 460));
 
         commitButton.setText("Commit Changes");
         commitButton.setToolTipText("Commit the changes to the database.");
 
-        videoButton.setText("Insert Video...");
-        videoButton.setToolTipText("Insert a video into the course description.");
+        insertVideoButton.setText("Insert Video...");
+        insertVideoButton.setToolTipText("Insert a video into the course description.");
 
-        jButton1.setText("Insert Image...");
-        jButton1.setToolTipText("Insert an image into the course description.");
+        insertImageButton.setText("Insert Image...");
+        insertImageButton.setToolTipText("Insert an image into the course description.");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -70,9 +74,9 @@ public class CourseEditPane extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addComponent(insertImageButton)
                 .addGap(18, 18, 18)
-                .addComponent(videoButton)
+                .addComponent(insertVideoButton)
                 .addGap(18, 18, 18)
                 .addComponent(commitButton)
                 .addContainerGap(251, Short.MAX_VALUE))
@@ -82,8 +86,8 @@ public class CourseEditPane extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(commitButton)
-                    .addComponent(videoButton)
-                    .addComponent(jButton1))
+                    .addComponent(insertVideoButton)
+                    .addComponent(insertImageButton))
                 .addGap(0, 11, Short.MAX_VALUE))
         );
 
@@ -120,14 +124,23 @@ public class CourseEditPane extends javax.swing.JPanel {
 
         locationField.setToolTipText("The location classes for the course will be held.");
 
-        lecturerField.setToolTipText("The full name of the lecturer for this course.");
-
         capacityField.setToolTipText("The maximum number of people that can register for this course.");
 
         descriptionField.setColumns(20);
         descriptionField.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         descriptionField.setRows(5);
         descriptionScrollPane.setViewportView(descriptionField);
+
+        timeLabel.setText("Time (24h format):");
+
+        hoursField.setText("HH");
+
+        colonLabel.setText(":");
+
+        minutesField.setText("MM");
+
+        lecturerField.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "---Select a lecturer---" }));
+        lecturerField.setToolTipText("Select a lecturer for this course. The list is generated from the lecturers stored in the database. To add a new lecturer, use the Add Lecturer button.");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -162,11 +175,19 @@ public class CourseEditPane extends javax.swing.JPanel {
                                 .addComponent(fwdSlash2)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(startYearField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(timeLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(hoursField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(colonLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(minutesField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(locationField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lecturerField))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(locationField)
+                            .addComponent(lecturerField, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,7 +223,11 @@ public class CourseEditPane extends javax.swing.JPanel {
                     .addComponent(fwdSlash1)
                     .addComponent(startMonthField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fwdSlash2)
-                    .addComponent(startYearField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(startYearField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(timeLabel)
+                    .addComponent(hoursField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(colonLabel)
+                    .addComponent(minutesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(durationLabel)
@@ -225,8 +250,8 @@ public class CourseEditPane extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -242,6 +267,7 @@ public class CourseEditPane extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField capacityField;
     private javax.swing.JLabel capacityLabel;
+    private javax.swing.JLabel colonLabel;
     private javax.swing.JButton commitButton;
     private javax.swing.JTextArea descriptionField;
     private javax.swing.JLabel descriptionLabel;
@@ -253,17 +279,20 @@ public class CourseEditPane extends javax.swing.JPanel {
     private javax.swing.JLabel feeLabel;
     private javax.swing.JLabel fwdSlash1;
     private javax.swing.JLabel fwdSlash2;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField hoursField;
+    private javax.swing.JButton insertImageButton;
+    private javax.swing.JButton insertVideoButton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField lecturerField;
+    private javax.swing.JComboBox lecturerField;
     private javax.swing.JLabel lecturerLabel;
     private javax.swing.JTextField locationField;
     private javax.swing.JLabel locationLabel;
+    private javax.swing.JTextField minutesField;
     private javax.swing.JLabel startDateLabel;
     private javax.swing.JTextField startDayField;
     private javax.swing.JTextField startMonthField;
     private javax.swing.JTextField startYearField;
-    private javax.swing.JButton videoButton;
+    private javax.swing.JLabel timeLabel;
     // End of variables declaration//GEN-END:variables
 }

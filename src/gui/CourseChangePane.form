@@ -24,8 +24,8 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanel1" max="32767" attributes="0"/>
-                  <Component id="jPanel2" alignment="1" max="32767" attributes="0"/>
+                  <Component id="jPanel2" max="32767" attributes="0"/>
+                  <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -50,9 +50,9 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  <Component id="insertImageButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="videoButton" min="-2" max="-2" attributes="0"/>
+                  <Component id="insertVideoButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="commitButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="251" max="32767" attributes="0"/>
@@ -64,8 +64,8 @@
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="commitButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="videoButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="insertVideoButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="insertImageButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="0" pref="11" max="32767" attributes="0"/>
               </Group>
@@ -79,13 +79,13 @@
             <Property name="toolTipText" type="java.lang.String" value="Commit the changes to the database."/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="videoButton">
+        <Component class="javax.swing.JButton" name="insertVideoButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Insert Video..."/>
             <Property name="toolTipText" type="java.lang.String" value="Insert a video into the course description."/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="insertImageButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Insert Image..."/>
             <Property name="toolTipText" type="java.lang.String" value="Insert an image into the course description."/>
@@ -133,11 +133,19 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="startYearField" min="-2" pref="38" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="timeLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="hoursField" min="-2" pref="24" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="colonLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="minutesField" min="-2" pref="24" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="locationField" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="locationField" max="32767" attributes="0"/>
                               <Component id="lecturerField" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -188,6 +196,10 @@
                       <Component id="startMonthField" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="fwdSlash2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="startYearField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="timeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="hoursField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="colonLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="minutesField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -292,11 +304,6 @@
             <Property name="toolTipText" type="java.lang.String" value="The location classes for the course will be held."/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="lecturerField">
-          <Properties>
-            <Property name="toolTipText" type="java.lang.String" value="The full name of the lecturer for this course."/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JTextField" name="capacityField">
           <Properties>
             <Property name="toolTipText" type="java.lang.String" value="The maximum number of people that can register for this course."/>
@@ -317,6 +324,36 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JLabel" name="timeLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Time (24h format):"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="hoursField">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="HH"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="colonLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value=":"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="minutesField">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="MM"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="lecturerField">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="1">
+                <StringItem index="0" value="---Select a lecturer---"/>
+              </StringArray>
+            </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Select a lecturer for this course. The list is generated from the lecturers stored in the database. To add a new lecturer, use the Add Lecturer button."/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>
