@@ -50,7 +50,8 @@ public class CourseEditPane extends javax.swing.JPanel {
         locationField = new javax.swing.JTextField();
         lecturerField = new javax.swing.JTextField();
         capacityField = new javax.swing.JTextField();
-        descriptionField = new javax.swing.JTextField();
+        descriptionScrollPane = new javax.swing.JScrollPane();
+        descriptionField = new javax.swing.JTextArea();
 
         setPreferredSize(new java.awt.Dimension(640, 460));
 
@@ -74,7 +75,7 @@ public class CourseEditPane extends javax.swing.JPanel {
                 .addComponent(videoButton)
                 .addGap(18, 18, 18)
                 .addComponent(commitButton)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(251, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,7 +124,10 @@ public class CourseEditPane extends javax.swing.JPanel {
 
         capacityField.setToolTipText("The maximum number of people that can register for this course.");
 
-        descriptionField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        descriptionField.setColumns(20);
+        descriptionField.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        descriptionField.setRows(5);
+        descriptionScrollPane.setViewportView(descriptionField);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -157,7 +161,8 @@ public class CourseEditPane extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(fwdSlash2)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(startYearField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(startYearField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(locationField, javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,10 +170,15 @@ public class CourseEditPane extends javax.swing.JPanel {
                         .addContainerGap())))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(feeLabel)
-                    .addComponent(descriptionLabel))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(feeLabel)
+                            .addComponent(descriptionLabel))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(descriptionScrollPane)))
                 .addContainerGap())
-            .addComponent(descriptionField)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,7 +214,8 @@ public class CourseEditPane extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(descriptionLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(descriptionField, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE))
+                .addComponent(descriptionScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -227,12 +238,14 @@ public class CourseEditPane extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField capacityField;
     private javax.swing.JLabel capacityLabel;
     private javax.swing.JButton commitButton;
-    private javax.swing.JTextField descriptionField;
+    private javax.swing.JTextArea descriptionField;
     private javax.swing.JLabel descriptionLabel;
+    private javax.swing.JScrollPane descriptionScrollPane;
     private javax.swing.JTextField durationField;
     private javax.swing.JLabel durationLabel;
     private javax.swing.JLabel euroSign;
