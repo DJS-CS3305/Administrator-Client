@@ -5,15 +5,31 @@ import java.util.LinkedList;
 
 /**
  * Class for viewing the results of a database search through a GUI.
+ * It has a context-sensitive button that will change it's function
+ * based on the table the view pane is displaying results from.
  * 
  * @author Stephen
  */
 public class ViewPane extends javax.swing.JPanel {
+    private TableEnum tableType;
+    
     /**
      * Creates new form ViewPane
      */
-    public ViewPane() {
+    public ViewPane(TableEnum tableType) {
         initComponents();
+        this.tableType = tableType;
+        
+        //table = tableType query result
+        
+        if(tableType.isButtonEnabled()) {
+            contextButton.setText(tableType.getButtonText());
+        }
+        else {
+            contextButton.setEnabled(false);
+            contextButton.setVisible(false);
+            contextPane.setVisible(false);
+        }
     }
 
     /**
@@ -25,24 +41,32 @@ public class ViewPane extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        optionsPane = new javax.swing.JPanel();
+        contextPane = new javax.swing.JPanel();
+        contextButton = new javax.swing.JButton();
         tablePane = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
 
-        setBackground(new java.awt.Color(0, 0, 0));
-        setPreferredSize(new java.awt.Dimension(640, 460));
+        setPreferredSize(new java.awt.Dimension(600, 380));
 
-        optionsPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        contextPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        javax.swing.GroupLayout optionsPaneLayout = new javax.swing.GroupLayout(optionsPane);
-        optionsPane.setLayout(optionsPaneLayout);
-        optionsPaneLayout.setHorizontalGroup(
-            optionsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 638, Short.MAX_VALUE)
+        contextButton.setText("Context-Sensiitive Button");
+
+        javax.swing.GroupLayout contextPaneLayout = new javax.swing.GroupLayout(contextPane);
+        contextPane.setLayout(contextPaneLayout);
+        contextPaneLayout.setHorizontalGroup(
+            contextPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contextPaneLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(contextButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        optionsPaneLayout.setVerticalGroup(
-            optionsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 118, Short.MAX_VALUE)
+        contextPaneLayout.setVerticalGroup(
+            contextPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contextPaneLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(contextButton)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         table.setColumnSelectionAllowed(true);
@@ -54,19 +78,20 @@ public class ViewPane extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(optionsPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(tablePane, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
+            .addComponent(contextPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(tablePane, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(tablePane, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(optionsPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(tablePane, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(contextPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel optionsPane;
+    private javax.swing.JButton contextButton;
+    private javax.swing.JPanel contextPane;
     private javax.swing.JTable table;
     private javax.swing.JScrollPane tablePane;
     // End of variables declaration//GEN-END:variables

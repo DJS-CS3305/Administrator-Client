@@ -31,6 +31,7 @@ public class LecturerChangePane extends javax.swing.JPanel {
         insertImageButton = new javax.swing.JButton();
         insertVideoButton = new javax.swing.JButton();
         commitButton = new javax.swing.JButton();
+        insertLinkButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         nameLabel = new javax.swing.JLabel();
         descriptionLabel = new javax.swing.JLabel();
@@ -50,6 +51,8 @@ public class LecturerChangePane extends javax.swing.JPanel {
         commitButton.setText("Commit Changes");
         commitButton.setToolTipText("Commit the changes to the database.");
 
+        insertLinkButton.setText("Insert Hyperlink...");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -60,8 +63,10 @@ public class LecturerChangePane extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(insertVideoButton)
                 .addGap(18, 18, 18)
+                .addComponent(insertLinkButton)
+                .addGap(18, 18, 18)
                 .addComponent(commitButton)
-                .addContainerGap(251, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -70,7 +75,8 @@ public class LecturerChangePane extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(insertImageButton)
                     .addComponent(insertVideoButton)
-                    .addComponent(commitButton))
+                    .addComponent(commitButton)
+                    .addComponent(insertLinkButton))
                 .addContainerGap())
         );
 
@@ -79,6 +85,7 @@ public class LecturerChangePane extends javax.swing.JPanel {
         descriptionLabel.setText("Lecturer Description:");
 
         descriptionField.setColumns(20);
+        descriptionField.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         descriptionField.setRows(5);
         jScrollPane1.setViewportView(descriptionField);
 
@@ -138,6 +145,7 @@ public class LecturerChangePane extends javax.swing.JPanel {
     private javax.swing.JTextArea descriptionField;
     private javax.swing.JLabel descriptionLabel;
     private javax.swing.JButton insertImageButton;
+    private javax.swing.JButton insertLinkButton;
     private javax.swing.JButton insertVideoButton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

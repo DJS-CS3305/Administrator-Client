@@ -3,7 +3,7 @@
 <Form version="1.3" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <Properties>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[640, 460]"/>
+      <Dimension value="[600, 400]"/>
     </Property>
   </Properties>
   <AuxValues>
@@ -21,78 +21,24 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanel2" max="32767" attributes="0"/>
-                  <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jPanel2" min="-2" pref="520" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel2" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="jPanel1">
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="insertImageButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="insertVideoButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="commitButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="251" max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="commitButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="insertVideoButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="insertImageButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="0" pref="11" max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JButton" name="commitButton">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Commit Changes"/>
-            <Property name="toolTipText" type="java.lang.String" value="Commit the changes to the database."/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="insertVideoButton">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Insert Video..."/>
-            <Property name="toolTipText" type="java.lang.String" value="Insert a video into the course description."/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="insertImageButton">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Insert Image..."/>
-            <Property name="toolTipText" type="java.lang.String" value="Insert an image into the course description."/>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
     <Container class="javax.swing.JPanel" name="jPanel2">
 
       <Layout>
@@ -111,36 +57,34 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="euroSign" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="feeField" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="startDayField" pref="25" max="32767" attributes="0"/>
-                                      <Component id="capacityField" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="durationField" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="startDayField" min="-2" pref="39" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="fwdSlash1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="startMonthField" min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Component id="startMonthField" min="-2" pref="40" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="fwdSlash2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="startYearField" min="-2" pref="46" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="durationField" alignment="0" pref="84" max="32767" attributes="0"/>
+                                      <Component id="capacityField" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="startYearField" min="-2" pref="38" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="timeLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="hoursField" min="-2" pref="24" max="-2" attributes="0"/>
+                          <Component id="hoursField" min="-2" pref="38" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="colonLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="minutesField" min="-2" pref="24" max="-2" attributes="0"/>
+                          <Component id="minutesField" min="-2" pref="39" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
@@ -154,16 +98,23 @@
               </Group>
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="feeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="descriptionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="descriptionScrollPane" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="descriptionLabel" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="feeLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                                  <Component id="euroSign" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="feeField" min="-2" pref="69" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -192,14 +143,14 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="startDateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="startDayField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="fwdSlash1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="startMonthField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="fwdSlash2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="startYearField" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="timeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="hoursField" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="colonLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="minutesField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="fwdSlash1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="startMonthField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="fwdSlash2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="startYearField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -214,7 +165,9 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="descriptionLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="descriptionScrollPane" pref="222" max="32767" attributes="0"/>
+                  <Component id="descriptionScrollPane" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -264,29 +217,6 @@
         <Component class="javax.swing.JTextField" name="startDayField">
           <Properties>
             <Property name="text" type="java.lang.String" value="DD"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="fwdSlash1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="/"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="startMonthField">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="MM"/>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[20, 20]"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="fwdSlash2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="/"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="startYearField">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="YYYY"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="feeField">
@@ -352,6 +282,87 @@
               </StringArray>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Select a lecturer for this course. The list is generated from the lecturers stored in the database. To add a new lecturer, use the Add Lecturer button."/>
+          </Properties>
+        </Component>
+        <Container class="javax.swing.JPanel" name="jPanel1">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="insertImageButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="insertVideoButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="insertLinkButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="commitButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="commitButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="insertVideoButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="insertImageButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="insertLinkButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="16" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JButton" name="commitButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Commit Changes"/>
+                <Property name="toolTipText" type="java.lang.String" value="Commit the changes to the database."/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="insertVideoButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Insert Video..."/>
+                <Property name="toolTipText" type="java.lang.String" value="Insert a video into the course description."/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="insertImageButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Insert Image..."/>
+                <Property name="toolTipText" type="java.lang.String" value="Insert an image into the course description."/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="insertLinkButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Insert Hyperlink..."/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JLabel" name="fwdSlash1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="/"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="startMonthField">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="MM"/>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[20, 20]"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="fwdSlash2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="/"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="startYearField">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="YYYY"/>
           </Properties>
         </Component>
       </SubComponents>

@@ -27,10 +27,6 @@ public class CourseChangePane extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        commitButton = new javax.swing.JButton();
-        insertVideoButton = new javax.swing.JButton();
-        insertImageButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         lecturerLabel = new javax.swing.JLabel();
         locationLabel = new javax.swing.JLabel();
@@ -41,10 +37,6 @@ public class CourseChangePane extends javax.swing.JPanel {
         descriptionLabel = new javax.swing.JLabel();
         durationField = new javax.swing.JTextField();
         startDayField = new javax.swing.JTextField();
-        fwdSlash1 = new javax.swing.JLabel();
-        startMonthField = new javax.swing.JTextField();
-        fwdSlash2 = new javax.swing.JLabel();
-        startYearField = new javax.swing.JTextField();
         feeField = new javax.swing.JTextField();
         euroSign = new javax.swing.JLabel();
         locationField = new javax.swing.JTextField();
@@ -56,40 +48,17 @@ public class CourseChangePane extends javax.swing.JPanel {
         colonLabel = new javax.swing.JLabel();
         minutesField = new javax.swing.JTextField();
         lecturerField = new javax.swing.JComboBox();
+        jPanel1 = new javax.swing.JPanel();
+        commitButton = new javax.swing.JButton();
+        insertVideoButton = new javax.swing.JButton();
+        insertImageButton = new javax.swing.JButton();
+        insertLinkButton = new javax.swing.JButton();
+        fwdSlash1 = new javax.swing.JLabel();
+        startMonthField = new javax.swing.JTextField();
+        fwdSlash2 = new javax.swing.JLabel();
+        startYearField = new javax.swing.JTextField();
 
-        setPreferredSize(new java.awt.Dimension(640, 460));
-
-        commitButton.setText("Commit Changes");
-        commitButton.setToolTipText("Commit the changes to the database.");
-
-        insertVideoButton.setText("Insert Video...");
-        insertVideoButton.setToolTipText("Insert a video into the course description.");
-
-        insertImageButton.setText("Insert Image...");
-        insertImageButton.setToolTipText("Insert an image into the course description.");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(insertImageButton)
-                .addGap(18, 18, 18)
-                .addComponent(insertVideoButton)
-                .addGap(18, 18, 18)
-                .addComponent(commitButton)
-                .addContainerGap(251, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(commitButton)
-                    .addComponent(insertVideoButton)
-                    .addComponent(insertImageButton))
-                .addGap(0, 11, Short.MAX_VALUE))
-        );
+        setPreferredSize(new java.awt.Dimension(600, 400));
 
         lecturerLabel.setText("Lecturer:");
 
@@ -108,15 +77,6 @@ public class CourseChangePane extends javax.swing.JPanel {
         durationField.setToolTipText("Enter the number of days the course will last. Maximum duration is one week.");
 
         startDayField.setText("DD");
-
-        fwdSlash1.setText("/");
-
-        startMonthField.setText("MM");
-        startMonthField.setPreferredSize(new java.awt.Dimension(20, 20));
-
-        fwdSlash2.setText("/");
-
-        startYearField.setText("YYYY");
 
         feeField.setToolTipText("The cost of registering for this course in Euros. If there is no decimal point entered, the value will be interpereted as Euros alone.");
 
@@ -142,6 +102,52 @@ public class CourseChangePane extends javax.swing.JPanel {
         lecturerField.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "---Select a lecturer---" }));
         lecturerField.setToolTipText("Select a lecturer for this course. The list is generated from the lecturers stored in the database. To add a new lecturer, use the Add Lecturer button.");
 
+        commitButton.setText("Commit Changes");
+        commitButton.setToolTipText("Commit the changes to the database.");
+
+        insertVideoButton.setText("Insert Video...");
+        insertVideoButton.setToolTipText("Insert a video into the course description.");
+
+        insertImageButton.setText("Insert Image...");
+        insertImageButton.setToolTipText("Insert an image into the course description.");
+
+        insertLinkButton.setText("Insert Hyperlink...");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(insertImageButton)
+                .addGap(18, 18, 18)
+                .addComponent(insertVideoButton)
+                .addGap(18, 18, 18)
+                .addComponent(insertLinkButton)
+                .addGap(18, 18, 18)
+                .addComponent(commitButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(commitButton)
+                    .addComponent(insertVideoButton)
+                    .addComponent(insertImageButton)
+                    .addComponent(insertLinkButton))
+                .addGap(0, 16, Short.MAX_VALUE))
+        );
+
+        fwdSlash1.setText("/");
+
+        startMonthField.setText("MM");
+        startMonthField.setPreferredSize(new java.awt.Dimension(20, 20));
+
+        fwdSlash2.setText("/");
+
+        startYearField.setText("YYYY");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -157,32 +163,30 @@ public class CourseChangePane extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(euroSign)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(feeField))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(startDayField, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-                                    .addComponent(capacityField)
-                                    .addComponent(durationField))
+                                .addComponent(startDayField, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(fwdSlash1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(startMonthField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(startMonthField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fwdSlash2)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(startYearField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                                .addComponent(fwdSlash2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(startYearField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(11, 11, 11))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(durationField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
+                                    .addComponent(capacityField, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(76, 76, 76)))
                         .addComponent(timeLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(hoursField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(hoursField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(colonLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(minutesField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(minutesField, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,13 +196,19 @@ public class CourseChangePane extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(feeLabel)
-                            .addComponent(descriptionLabel))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(descriptionScrollPane)))
+                        .addComponent(descriptionScrollPane))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(descriptionLabel)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(feeLabel)
+                                .addGap(61, 61, 61)
+                                .addComponent(euroSign)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(feeField, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -220,14 +230,14 @@ public class CourseChangePane extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(startDateLabel)
                     .addComponent(startDayField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fwdSlash1)
-                    .addComponent(startMonthField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fwdSlash2)
-                    .addComponent(startYearField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(timeLabel)
                     .addComponent(hoursField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(colonLabel)
-                    .addComponent(minutesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(minutesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fwdSlash1)
+                    .addComponent(startMonthField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fwdSlash2)
+                    .addComponent(startYearField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(durationLabel)
@@ -239,7 +249,9 @@ public class CourseChangePane extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(descriptionLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(descriptionScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                .addComponent(descriptionScrollPane)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -249,18 +261,15 @@ public class CourseChangePane extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(76, 76, 76))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -281,6 +290,7 @@ public class CourseChangePane extends javax.swing.JPanel {
     private javax.swing.JLabel fwdSlash2;
     private javax.swing.JTextField hoursField;
     private javax.swing.JButton insertImageButton;
+    private javax.swing.JButton insertLinkButton;
     private javax.swing.JButton insertVideoButton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
