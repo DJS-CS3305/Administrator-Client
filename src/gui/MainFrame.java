@@ -36,15 +36,11 @@ public class MainFrame extends javax.swing.JFrame {
         viewCoursesMenuItem = new javax.swing.JMenuItem();
         viewLecturersMenuItem = new javax.swing.JMenuItem();
         viewRegistrationsMenuItem = new javax.swing.JMenuItem();
-        editMenu = new javax.swing.JMenu();
-        editCourseMenuItem = new javax.swing.JMenuItem();
-        editLecturerMenuItem = new javax.swing.JMenuItem();
         addMenu = new javax.swing.JMenu();
         addCourseMenuItem = new javax.swing.JMenuItem();
         addLecturerMenuItem = new javax.swing.JMenuItem();
         managementMenu = new javax.swing.JMenu();
         messageInboxMenuItem = new javax.swing.JMenuItem();
-        refundsMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("UCC Summer Courses Office Administrator Tool");
@@ -54,12 +50,27 @@ public class MainFrame extends javax.swing.JFrame {
         connectionMenu.setText("Connection");
 
         connectMenuItem.setText("Connect...");
+        connectMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                connectMenuItemActionPerformed(evt);
+            }
+        });
         connectionMenu.add(connectMenuItem);
 
         disconnectMenuItem.setText("Disconnect");
+        disconnectMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                disconnectMenuItemActionPerformed(evt);
+            }
+        });
         connectionMenu.add(disconnectMenuItem);
 
         logOutMenuItem.setText("Log Out");
+        logOutMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logOutMenuItemActionPerformed(evt);
+            }
+        });
         connectionMenu.add(logOutMenuItem);
 
         menuBar.add(connectionMenu);
@@ -67,35 +78,55 @@ public class MainFrame extends javax.swing.JFrame {
         viewMenu.setText("View");
 
         viewUsersMenuItem.setText("View Users...");
+        viewUsersMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewUsersMenuItemActionPerformed(evt);
+            }
+        });
         viewMenu.add(viewUsersMenuItem);
 
         viewCoursesMenuItem.setText("View Courses...");
+        viewCoursesMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewCoursesMenuItemActionPerformed(evt);
+            }
+        });
         viewMenu.add(viewCoursesMenuItem);
 
         viewLecturersMenuItem.setText("View Lecturers...");
+        viewLecturersMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewLecturersMenuItemActionPerformed(evt);
+            }
+        });
         viewMenu.add(viewLecturersMenuItem);
 
         viewRegistrationsMenuItem.setText("View Registrations...");
+        viewRegistrationsMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewRegistrationsMenuItemActionPerformed(evt);
+            }
+        });
         viewMenu.add(viewRegistrationsMenuItem);
 
         menuBar.add(viewMenu);
 
-        editMenu.setText("Edit");
-
-        editCourseMenuItem.setText("Edit Course...");
-        editMenu.add(editCourseMenuItem);
-
-        editLecturerMenuItem.setText("Edit Lecturer...");
-        editMenu.add(editLecturerMenuItem);
-
-        menuBar.add(editMenu);
-
         addMenu.setText("Add");
 
         addCourseMenuItem.setText("Add Course...");
+        addCourseMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addCourseMenuItemActionPerformed(evt);
+            }
+        });
         addMenu.add(addCourseMenuItem);
 
         addLecturerMenuItem.setText("Add Lecturer...");
+        addLecturerMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addLecturerMenuItemActionPerformed(evt);
+            }
+        });
         addMenu.add(addLecturerMenuItem);
 
         menuBar.add(addMenu);
@@ -103,10 +134,12 @@ public class MainFrame extends javax.swing.JFrame {
         managementMenu.setText("Management");
 
         messageInboxMenuItem.setText("Message Inbox...");
+        messageInboxMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                messageInboxMenuItemActionPerformed(evt);
+            }
+        });
         managementMenu.add(messageInboxMenuItem);
-
-        refundsMenuItem.setText("Issue Refunds...");
-        managementMenu.add(refundsMenuItem);
 
         menuBar.add(managementMenu);
 
@@ -125,6 +158,48 @@ public class MainFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void connectMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_connectMenuItemActionPerformed
+        contents.setViewportView(new ConnectionPane());
+    }//GEN-LAST:event_connectMenuItemActionPerformed
+
+    private void disconnectMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disconnectMenuItemActionPerformed
+        //disconnect
+        contents.setViewportView(new ConnectionPane());
+    }//GEN-LAST:event_disconnectMenuItemActionPerformed
+
+    private void logOutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutMenuItemActionPerformed
+        //log out
+        contents.setViewportView(new ConnectionPane());
+    }//GEN-LAST:event_logOutMenuItemActionPerformed
+
+    private void viewUsersMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewUsersMenuItemActionPerformed
+        contents.setViewportView(new ViewPane(TableEnum.USERS));
+    }//GEN-LAST:event_viewUsersMenuItemActionPerformed
+
+    private void viewCoursesMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewCoursesMenuItemActionPerformed
+        contents.setViewportView(new ViewPane(TableEnum.COURSES));
+    }//GEN-LAST:event_viewCoursesMenuItemActionPerformed
+
+    private void viewLecturersMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewLecturersMenuItemActionPerformed
+        contents.setViewportView(new ViewPane(TableEnum.LECTURERS));
+    }//GEN-LAST:event_viewLecturersMenuItemActionPerformed
+
+    private void viewRegistrationsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewRegistrationsMenuItemActionPerformed
+        contents.setViewportView(new ViewPane(TableEnum.REGISTRATIONS));
+    }//GEN-LAST:event_viewRegistrationsMenuItemActionPerformed
+
+    private void addCourseMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCourseMenuItemActionPerformed
+        contents.setViewportView(new CourseChangePane());
+    }//GEN-LAST:event_addCourseMenuItemActionPerformed
+
+    private void addLecturerMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addLecturerMenuItemActionPerformed
+        contents.setViewportView(new LecturerChangePane());
+    }//GEN-LAST:event_addLecturerMenuItemActionPerformed
+
+    private void messageInboxMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_messageInboxMenuItemActionPerformed
+        contents.setViewportView(new ViewPane(TableEnum.UNREPLIED_MESSAGES));
+    }//GEN-LAST:event_messageInboxMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,14 +243,10 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenu connectionMenu;
     private javax.swing.JScrollPane contents;
     private javax.swing.JMenuItem disconnectMenuItem;
-    private javax.swing.JMenuItem editCourseMenuItem;
-    private javax.swing.JMenuItem editLecturerMenuItem;
-    private javax.swing.JMenu editMenu;
     private javax.swing.JMenuItem logOutMenuItem;
     private javax.swing.JMenu managementMenu;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem messageInboxMenuItem;
-    private javax.swing.JMenuItem refundsMenuItem;
     private javax.swing.JMenuItem viewCoursesMenuItem;
     private javax.swing.JMenuItem viewLecturersMenuItem;
     private javax.swing.JMenu viewMenu;
@@ -183,8 +254,12 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem viewUsersMenuItem;
     // End of variables declaration//GEN-END:variables
     
-    //getters & setters
-    public void setContents(javax.swing.JPanel panel) {
+    /**
+     * Switches the main pane to a new panel.
+     * 
+     * @param panel 
+     */
+    public void changeContents(javax.swing.JPanel panel) {
         contents.setViewportView(panel);
     }
 }

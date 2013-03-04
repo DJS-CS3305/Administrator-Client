@@ -39,8 +39,8 @@ public class LecturerChangePane extends javax.swing.JPanel {
         descriptionField = new javax.swing.JTextArea();
         nameField = new javax.swing.JTextField();
 
-        setMinimumSize(new java.awt.Dimension(640, 460));
-        setPreferredSize(new java.awt.Dimension(640, 460));
+        setMinimumSize(new java.awt.Dimension(600, 380));
+        setPreferredSize(new java.awt.Dimension(600, 380));
 
         insertImageButton.setText("Insert Image...");
         insertImageButton.setToolTipText("Insert an image into the lecturer's description.");
@@ -66,7 +66,7 @@ public class LecturerChangePane extends javax.swing.JPanel {
                 .addComponent(insertLinkButton)
                 .addGap(18, 18, 18)
                 .addComponent(commitButton)
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,7 +118,7 @@ public class LecturerChangePane extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(descriptionLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

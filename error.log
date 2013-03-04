@@ -1,0 +1,6 @@
+04-Mar-2013 11:10:45 log.AbstractLogger log
+SEVERE: java.net.ConnectException: Connection refused: connect
+04-Mar-2013 11:10:54 log.AbstractLogger log
+SEVERE: java.net.ConnectException: Connection refused: connect
+04-Mar-2013 11:12:12 log.AbstractLogger log
+SEVERE: java.net.ConnectException: Connection refused: connect

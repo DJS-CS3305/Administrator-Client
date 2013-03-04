@@ -48,7 +48,7 @@
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="192" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -81,6 +81,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Connect"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="connectButtonActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -91,14 +94,14 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="usernameLabel" min="-2" max="-2" attributes="0"/>
-                      <Component id="passwordLabel" alignment="0" min="-2" pref="66" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="usernameLabel" max="32767" attributes="0"/>
+                      <Component id="passwordLabel" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="passwordField" min="-2" pref="359" max="-2" attributes="0"/>
-                      <Component id="usernameField" min="-2" pref="359" max="-2" attributes="0"/>
+                      <Component id="passwordField" min="-2" pref="391" max="-2" attributes="0"/>
+                      <Component id="usernameField" min="-2" pref="391" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               </Group>
@@ -108,14 +111,14 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="usernameField" min="-2" max="-2" attributes="0"/>
-                      <Component id="usernameLabel" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="usernameField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="usernameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="passwordField" min="-2" max="-2" attributes="0"/>
-                      <Component id="passwordLabel" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="passwordField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="passwordLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -138,14 +141,14 @@
             <Property name="toolTipText" type="java.lang.String" value="Enter your password here."/>
           </Properties>
         </Component>
-        <Component class="java.awt.Label" name="passwordLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Password:"/>
-          </Properties>
-        </Component>
-        <Component class="java.awt.Label" name="usernameLabel">
+        <Component class="javax.swing.JLabel" name="usernameLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="Username:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="passwordLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Password:"/>
           </Properties>
         </Component>
       </SubComponents>

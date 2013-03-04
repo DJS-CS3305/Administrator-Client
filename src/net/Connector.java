@@ -91,4 +91,7 @@ public class Connector {
     public static AdminClientSocket getSocket() {
         return SOCKET;
     }
+    public static boolean isConnected() {
+        return SOCKET != null;
+    }
 }

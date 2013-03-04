@@ -4,6 +4,8 @@
  */
 package gui;
 
+import net.Connector;
+
 /**
  * Pane for connecting to the server. This is the initial window for the client.
  * Accessing other windows should be prohibited until there is a connection.
@@ -12,7 +14,11 @@ package gui;
  * @author saf3
  */
 public class ConnectionPane extends javax.swing.JPanel {
-
+    private static final String NO_USERNAME_ERROR = "Please enter your username.";
+    private static final String NO_PASSWORD_ERROR = "Please enter your password.";
+    private static final String CONNECTION_ERROR = "There was an error in connection. " + 
+            "Please check your username and password, or try again later.";
+    private static final String SUCCESSFUL_CONNECTION_MSG = "Connection successful.";
     /**
      * Creates new form ConnectionPane
      */
@@ -34,14 +40,19 @@ public class ConnectionPane extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         usernameField = new javax.swing.JTextField();
         passwordField = new javax.swing.JPasswordField();
-        passwordLabel = new java.awt.Label();
-        usernameLabel = new java.awt.Label();
+        usernameLabel = new javax.swing.JLabel();
+        passwordLabel = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         feedback = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(600, 380));
 
         connectButton.setText("Connect");
+        connectButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                connectButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -71,9 +82,9 @@ public class ConnectionPane extends javax.swing.JPanel {
         passwordField.setText("Password");
         passwordField.setToolTipText("Enter your password here.");
 
-        passwordLabel.setText("Password:");
-
         usernameLabel.setText("Username:");
+
+        passwordLabel.setText("Password:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -81,26 +92,26 @@ public class ConnectionPane extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(usernameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(passwordLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(usernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(usernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(usernameLabel))
                 .addGap(13, 13, 13)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passwordLabel))
                 .addContainerGap())
         );
 
@@ -145,13 +156,43 @@ public class ConnectionPane extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(192, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameFieldActionPerformed
-        // TODO add your handling code here:
+        connectButtonActionPerformed(evt);
     }//GEN-LAST:event_usernameFieldActionPerformed
+
+    private void connectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_connectButtonActionPerformed
+        String username = usernameField.getText();
+        String password = new String(passwordField.getPassword());
+        
+        if(username == null || username.equals("")) {
+            //empty username
+            feedback.setText(NO_USERNAME_ERROR);
+        }
+        else {
+            //non-empty username
+            
+            if(password == null || password.equals("")) {
+                //empty password
+                feedback.setText(NO_PASSWORD_ERROR);
+            }
+            else {
+                //non-empty password
+                
+                if(Connector.connect(username, password)) {
+                    //successful connection
+                    feedback.setText(SUCCESSFUL_CONNECTION_MSG);
+                }
+                else {
+                    //failed connection
+                    feedback.setText(CONNECTION_ERROR);
+                }
+            }
+        }
+    }//GEN-LAST:event_connectButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton connectButton;
@@ -160,8 +201,8 @@ public class ConnectionPane extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPasswordField passwordField;
-    private java.awt.Label passwordLabel;
+    private javax.swing.JLabel passwordLabel;
     private javax.swing.JTextField usernameField;
-    private java.awt.Label usernameLabel;
+    private javax.swing.JLabel usernameLabel;
     // End of variables declaration//GEN-END:variables
 }
