@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
@@ -46,7 +47,7 @@ public abstract class AbstractLogger extends Thread {
      * @param message 
      */
     public void log(String message) {
-        logger.log(severity, message);
+        logger.log(severity, ("\n\t" + new Date() + " - " + message));
         handler.flush();
     }
 }

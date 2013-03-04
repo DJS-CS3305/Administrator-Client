@@ -2,6 +2,7 @@ package net;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.IOException;
 import java.net.Socket;
 import log.ErrorLogger;
 
@@ -12,10 +13,8 @@ import log.ErrorLogger;
  * 
  * @author Stephen Fahy
  */
-public class AdminClientSocket extends Thread implements Runnable{
+public class AdminClientSocket extends Thread {
     private Socket socket;
-    private ObjectInputStream in;
-    private ObjectOutputStream out;
     
     /**
      * Constructor.
@@ -33,15 +32,51 @@ public class AdminClientSocket extends Thread implements Runnable{
         }
     }
     
-    public void run() {
+    /**
+     * Sends a message to the server.
+     * 
+     * @param msg 
+     */
+    public void sendMessage(Message msg) {
         try {
-            out = new ObjectOutputStream(socket.getOutputStream());
+            ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
+            out.writeObject(msg);
             out.flush();
-            in = new ObjectInputStream(socket.getInputStream());
+            out.close();
         }
         catch(Exception e) {
             ErrorLogger.get().log(e.toString());
             e.printStackTrace();
         }
+    }
+    
+    /**
+     * Tries to receive a message from the server. WARNING: will hang if no
+     * message comes in.
+     * 
+     * @return 
+     */
+    public Message receiveMessage() {
+        Message output = null;
+        
+        try {
+            ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
+            output = (Message) in.readObject();
+            in.close();
+        }
+        catch(Exception e) {
+            ErrorLogger.get().log(e.toString());
+            e.printStackTrace();
+        }
+        
+        return output;
+    }
+    
+    /**
+     * Tries to disconnect from the server.
+     * @throws IOException 
+     */
+    public void disconnect() throws IOException {
+        socket.close();
     }
 }

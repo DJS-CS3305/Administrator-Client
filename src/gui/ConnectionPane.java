@@ -81,6 +81,11 @@ public class ConnectionPane extends javax.swing.JPanel {
 
         passwordField.setText("Password");
         passwordField.setToolTipText("Enter your password here.");
+        passwordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordFieldActionPerformed(evt);
+            }
+        });
 
         usernameLabel.setText("Username:");
 
@@ -161,9 +166,14 @@ public class ConnectionPane extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameFieldActionPerformed
+        //when enter pressed in username field, run connect button code
         connectButtonActionPerformed(evt);
     }//GEN-LAST:event_usernameFieldActionPerformed
-
+    
+    /**
+     * Tries to connect to the remote server with the given username and password.
+     * @param evt 
+     */
     private void connectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_connectButtonActionPerformed
         String username = usernameField.getText();
         String password = new String(passwordField.getPassword());
@@ -193,6 +203,11 @@ public class ConnectionPane extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_connectButtonActionPerformed
+
+    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
+        //when enter pressed in password field, run connect button code
+        connectButtonActionPerformed(evt);
+    }//GEN-LAST:event_passwordFieldActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton connectButton;

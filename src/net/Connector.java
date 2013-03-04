@@ -56,16 +56,29 @@ public class Connector {
             else {
                 ErrorLogger.get().log("Unknown message received from server: " +
                         reply.toString());
-                //print error message to screen
             }
         }
         catch(Exception e) {
             ErrorLogger.get().log(e.toString());
             e.printStackTrace();
-            //print connection failed error message to screen
         }
         
         return output;
+    }
+    
+    /**
+     * Tries to disconnect from the server.
+     */
+    public static void disconnect() {
+        try {
+            SOCKET.disconnect();
+        }
+        catch(Exception e) {
+            ErrorLogger.get().log(e.toString());
+            e.printStackTrace();
+        }
+        
+        SOCKET = null;
     }
     
     /**
