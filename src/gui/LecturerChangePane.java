@@ -52,6 +52,7 @@ public class LecturerChangePane extends javax.swing.JPanel {
         commitButton.setToolTipText("Commit the changes to the database.");
 
         insertLinkButton.setText("Insert Hyperlink...");
+        insertLinkButton.setToolTipText("Insert a customizable hyperlink into the course description.");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

@@ -4,6 +4,9 @@
  */
 package gui;
 
+//import net.QueryMessage;
+import java.util.HashMap;
+
 /**
  * Pane for allowing the editing of course information or adding new courses.
  * 
@@ -12,10 +15,22 @@ package gui;
 public class CourseChangePane extends javax.swing.JPanel {
 
     /**
-     * Creates new form CourseEditPane
+     * Creates new form CourseEditPane.
      */
     public CourseChangePane() {
         initComponents();
+        
+        //fill lecturer dropdown with list of lecturers
+    }
+    
+    /**
+     * Creates new form CourseEditPane from a selection.
+     * @param row Map of column name : value representing a table row
+     */
+    public CourseChangePane(HashMap<String, String> row) {
+        this();
+        
+        //pre-fill fields with values from row.
     }
 
     /**
@@ -104,14 +119,35 @@ public class CourseChangePane extends javax.swing.JPanel {
 
         commitButton.setText("Commit Changes");
         commitButton.setToolTipText("Commit the changes to the database.");
+        commitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                commitButtonActionPerformed(evt);
+            }
+        });
 
         insertVideoButton.setText("Insert Video...");
         insertVideoButton.setToolTipText("Insert a video into the course description.");
+        insertVideoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                insertVideoButtonActionPerformed(evt);
+            }
+        });
 
         insertImageButton.setText("Insert Image...");
         insertImageButton.setToolTipText("Insert an image into the course description.");
+        insertImageButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                insertImageButtonActionPerformed(evt);
+            }
+        });
 
         insertLinkButton.setText("Insert Hyperlink...");
+        insertLinkButton.setToolTipText("Insert a customizable hyperlink into the course description.");
+        insertLinkButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                insertLinkButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -126,7 +162,7 @@ public class CourseChangePane extends javax.swing.JPanel {
                 .addComponent(insertLinkButton)
                 .addGap(18, 18, 18)
                 .addComponent(commitButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,7 +285,7 @@ public class CourseChangePane extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(descriptionLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(descriptionScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                .addComponent(descriptionScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -271,6 +307,22 @@ public class CourseChangePane extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void commitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commitButtonActionPerformed
+        //bundle field values into an SQL query and send it.
+    }//GEN-LAST:event_commitButtonActionPerformed
+
+    private void insertImageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertImageButtonActionPerformed
+        //open insert image window and take given pseudoHTML to insert into description.
+    }//GEN-LAST:event_insertImageButtonActionPerformed
+
+    private void insertVideoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertVideoButtonActionPerformed
+        //open insert video window and take given pseudoHTML to insert into description.
+    }//GEN-LAST:event_insertVideoButtonActionPerformed
+
+    private void insertLinkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertLinkButtonActionPerformed
+        //open insert hyperlink window and take given pseudoHTML to insert into description.
+    }//GEN-LAST:event_insertLinkButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField capacityField;

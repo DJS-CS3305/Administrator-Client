@@ -7,13 +7,21 @@ package gui;
  * @author Stephen
  */
 public class MainFrame extends javax.swing.JFrame {
-
+    private static MainFrame INSTANCE;
+    
     /**
      * Creates new form MainFrame
      */
     public MainFrame() {
-        initComponents();
-        contents.setViewportView(new ConnectionPane());
+        if(INSTANCE == null) {
+            initComponents();
+            contents.setViewportView(new ConnectionPane());
+
+            //disable menu items requiring connection until one is made.
+            setConnectionReliantItems(false);
+
+            INSTANCE = this;
+        }
     }
 
     /**
@@ -30,7 +38,6 @@ public class MainFrame extends javax.swing.JFrame {
         connectionMenu = new javax.swing.JMenu();
         connectMenuItem = new javax.swing.JMenuItem();
         disconnectMenuItem = new javax.swing.JMenuItem();
-        logOutMenuItem = new javax.swing.JMenuItem();
         viewMenu = new javax.swing.JMenu();
         viewUsersMenuItem = new javax.swing.JMenuItem();
         viewCoursesMenuItem = new javax.swing.JMenuItem();
@@ -45,7 +52,6 @@ public class MainFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("UCC Summer Courses Office Administrator Tool");
         setMinimumSize(new java.awt.Dimension(640, 480));
-        setPreferredSize(new java.awt.Dimension(640, 480));
 
         connectionMenu.setText("Connection");
 
@@ -64,14 +70,6 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         connectionMenu.add(disconnectMenuItem);
-
-        logOutMenuItem.setText("Log Out");
-        logOutMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logOutMenuItemActionPerformed(evt);
-            }
-        });
-        connectionMenu.add(logOutMenuItem);
 
         menuBar.add(connectionMenu);
 
@@ -168,11 +166,6 @@ public class MainFrame extends javax.swing.JFrame {
         contents.setViewportView(new ConnectionPane());
     }//GEN-LAST:event_disconnectMenuItemActionPerformed
 
-    private void logOutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutMenuItemActionPerformed
-        //log out
-        contents.setViewportView(new ConnectionPane());
-    }//GEN-LAST:event_logOutMenuItemActionPerformed
-
     private void viewUsersMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewUsersMenuItemActionPerformed
         contents.setViewportView(new ViewPane(TableEnum.USERS));
     }//GEN-LAST:event_viewUsersMenuItemActionPerformed
@@ -201,6 +194,36 @@ public class MainFrame extends javax.swing.JFrame {
         contents.setViewportView(new ViewPane(TableEnum.UNREPLIED_MESSAGES));
     }//GEN-LAST:event_messageInboxMenuItemActionPerformed
 
+    /**
+     * Sets all connection-reliant menu items to a given state.
+     * 
+     * @param enabled True for enabled, false for disabled.
+     */
+    public void setConnectionReliantItems(boolean enabled) {
+        disconnectMenuItem.setEnabled(enabled);
+        viewCoursesMenuItem.setEnabled(enabled);
+        viewLecturersMenuItem.setEnabled(enabled);
+        viewUsersMenuItem.setEnabled(enabled);
+        viewRegistrationsMenuItem.setEnabled(enabled);
+        messageInboxMenuItem.setEnabled(enabled);
+        addCourseMenuItem.setEnabled(enabled);
+        addLecturerMenuItem.setEnabled(enabled);
+    }
+    
+    /**
+     * Switches the main pane to a new panel.
+     * 
+     * @param panel 
+     */
+    public void changeContents(javax.swing.JPanel panel) {
+        contents.setViewportView(panel);
+    }
+    
+    //getters
+    public static MainFrame getInstance() {
+        return INSTANCE;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -243,7 +266,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenu connectionMenu;
     private javax.swing.JScrollPane contents;
     private javax.swing.JMenuItem disconnectMenuItem;
-    private javax.swing.JMenuItem logOutMenuItem;
     private javax.swing.JMenu managementMenu;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem messageInboxMenuItem;
@@ -253,13 +275,5 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem viewRegistrationsMenuItem;
     private javax.swing.JMenuItem viewUsersMenuItem;
     // End of variables declaration//GEN-END:variables
-    
-    /**
-     * Switches the main pane to a new panel.
-     * 
-     * @param panel 
-     */
-    public void changeContents(javax.swing.JPanel panel) {
-        contents.setViewportView(panel);
-    }
+
 }

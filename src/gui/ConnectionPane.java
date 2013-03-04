@@ -194,6 +194,7 @@ public class ConnectionPane extends javax.swing.JPanel {
                 
                 if(Connector.connect(username, password)) {
                     //successful connection
+                    MainFrame.getInstance().setConnectionReliantItems(true);
                     feedback.setText(SUCCESSFUL_CONNECTION_MSG);
                 }
                 else {

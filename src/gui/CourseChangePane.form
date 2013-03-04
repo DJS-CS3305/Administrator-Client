@@ -164,7 +164,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="descriptionLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="descriptionScrollPane" pref="153" max="32767" attributes="0"/>
+                  <Component id="descriptionScrollPane" pref="157" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -297,7 +297,7 @@
                       <Component id="insertLinkButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="commitButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="70" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -321,23 +321,36 @@
                 <Property name="text" type="java.lang.String" value="Commit Changes"/>
                 <Property name="toolTipText" type="java.lang.String" value="Commit the changes to the database."/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="commitButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="insertVideoButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Insert Video..."/>
                 <Property name="toolTipText" type="java.lang.String" value="Insert a video into the course description."/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="insertVideoButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="insertImageButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Insert Image..."/>
                 <Property name="toolTipText" type="java.lang.String" value="Insert an image into the course description."/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="insertImageButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="insertLinkButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Insert Hyperlink..."/>
+                <Property name="toolTipText" type="java.lang.String" value="Insert a customizable hyperlink into the course description."/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="insertLinkButtonActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
