@@ -14,3 +14,48 @@ SEVERE: java.net.ConnectException: Connection refused: connect
 SEVERE: java.net.ConnectException: Connection refused: connect
 04-Mar-2013 11:21:39 log.AbstractLogger log
 SEVERE: java.net.ConnectException: Connection refused: connect
+Mar 05, 2013 3:26:09 PM log.AbstractLogger log
+SEVERE: 
+	Tue Mar 05 15:26:09 GMT 2013 - java.net.SocketException: Socket is closed
+Mar 05, 2013 3:26:13 PM log.AbstractLogger log
+SEVERE: 
+	Tue Mar 05 15:26:13 GMT 2013 - java.net.SocketException: Socket is closed
+Mar 05, 2013 3:26:13 PM log.AbstractLogger log
+SEVERE: 
+	Tue Mar 05 15:26:13 GMT 2013 - java.net.SocketException: Socket is closed
+Mar 05, 2013 3:26:15 PM log.AbstractLogger log
+SEVERE: 
+	Tue Mar 05 15:26:15 GMT 2013 - java.net.SocketException: Socket is closed
+Mar 05, 2013 3:26:15 PM log.AbstractLogger log
+SEVERE: 
+	Tue Mar 05 15:26:15 GMT 2013 - java.net.SocketException: Socket is closed
+Mar 05, 2013 3:26:18 PM log.AbstractLogger log
+SEVERE: 
+	Tue Mar 05 15:26:18 GMT 2013 - java.net.SocketException: Socket is closed
+Mar 05, 2013 3:26:18 PM log.AbstractLogger log
+SEVERE: 
+	Tue Mar 05 15:26:18 GMT 2013 - java.net.SocketException: Socket is closed
+Mar 05, 2013 3:26:22 PM log.AbstractLogger log
+SEVERE: 
+	Tue Mar 05 15:26:22 GMT 2013 - java.net.SocketException: Socket is closed
+Mar 05, 2013 3:26:22 PM log.AbstractLogger log
+SEVERE: 
+	Tue Mar 05 15:26:22 GMT 2013 - java.net.SocketException: Socket is closed
+Mar 05, 2013 3:26:39 PM log.AbstractLogger log
+SEVERE: 
+	Tue Mar 05 15:26:39 GMT 2013 - java.net.SocketException: Socket is closed
+Mar 05, 2013 3:26:39 PM log.AbstractLogger log
+SEVERE: 
+	Tue Mar 05 15:26:39 GMT 2013 - java.net.SocketException: Socket is closed
+Mar 05, 2013 3:44:46 PM log.AbstractLogger log
+SEVERE: 
+	Tue Mar 05 15:44:46 GMT 2013 - java.net.SocketException: Connection reset
+Mar 05, 2013 3:51:50 PM log.AbstractLogger log
+SEVERE: 
+	Tue Mar 05 15:51:50 GMT 2013 - java.net.SocketException: Connection reset
+Mar 05, 2013 3:56:44 PM log.AbstractLogger log
+SEVERE: 
+	Tue Mar 05 15:56:44 GMT 2013 - java.net.SocketException: Connection reset
+Mar 05, 2013 4:20:03 PM log.AbstractLogger log
+SEVERE: 
+	Tue Mar 05 16:20:03 GMT 2013 - java.net.SocketException: Connection reset

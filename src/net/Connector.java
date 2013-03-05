@@ -35,7 +35,7 @@ public class Connector {
             ObjectOutputStream authOut = new ObjectOutputStream(authSocket.getOutputStream());
             authOut.flush();
             String passhash = encrypt(password);
-            AuthMessage auth = new AuthMessage(0, username, passhash);
+            AuthMessage auth = new AuthMessage(ID, username, passhash);
             
             auth.send(authOut);
             authOut.flush();

@@ -1,8 +1,8 @@
 package net;
 
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.IOException;
 import java.net.Socket;
 import log.ErrorLogger;
 
@@ -42,7 +42,6 @@ public class AdminClientSocket extends Thread {
             ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
             out.writeObject(msg);
             out.flush();
-            out.close();
         }
         catch(Exception e) {
             ErrorLogger.get().log(e.toString());
@@ -62,7 +61,6 @@ public class AdminClientSocket extends Thread {
         try {
             ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
             output = (Message) in.readObject();
-            in.close();
         }
         catch(Exception e) {
             ErrorLogger.get().log(e.toString());
