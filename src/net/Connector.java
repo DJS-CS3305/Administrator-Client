@@ -17,6 +17,7 @@ public class Connector {
     //private static final String DEFAULT_IP = "localhost";
     private static final int DEFAULT_AUTH_PORT = 579;
     private static AdminClientSocket SOCKET;
+    private static int ID;
     
     /**
      * Tries to connect to the server with the given login details.
@@ -79,6 +80,7 @@ public class Connector {
         }
         
         SOCKET = null;
+        ID = 0;
     }
     
     /**
@@ -106,5 +108,9 @@ public class Connector {
     }
     public static boolean isConnected() {
         return SOCKET != null;
+    }
+    public static int getNextId() {
+        ID++;
+        return ID;
     }
 }

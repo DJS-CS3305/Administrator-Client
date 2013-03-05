@@ -30,9 +30,9 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <Component id="jPanel2" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="48" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -47,7 +47,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                           <Component id="startDateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="durationLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="courseLengthLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="locationLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="lecturerLabel" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -57,6 +57,13 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="courseLengthField" alignment="0" pref="84" max="32767" attributes="0"/>
+                                      <Component id="capacityField" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                              </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="startDayField" min="-2" pref="39" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -69,21 +76,35 @@
                                   <Component id="startYearField" min="-2" pref="46" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="durationField" alignment="0" pref="84" max="32767" attributes="0"/>
-                                      <Component id="capacityField" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-                              </Group>
                           </Group>
-                          <Component id="timeLabel" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="timeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="classLengthLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="courseCode" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="hoursField" min="-2" pref="38" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="colonLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="minutesField" min="-2" pref="39" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="startHoursField" pref="38" max="32767" attributes="0"/>
+                                      <Component id="classLengthHoursField" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="colonLabel" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="startMinutesField" min="-2" pref="39" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="colonLabel2" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="classLengthMinutesField" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Component id="courseCodeField" max="32767" attributes="0"/>
+                          </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -101,22 +122,35 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="descriptionScrollPane" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="descriptionLabel" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="feeLabel" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                                  <Component id="euroSign" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="feeField" min="-2" pref="69" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="feeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <Component id="euroSign" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="feeField" min="-2" pref="69" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="insertImageButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="insertVideoButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="insertLinkButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="commitButton" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="feedback" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="72" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -143,9 +177,9 @@
                       <Component id="startDateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="startDayField" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="timeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="hoursField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="startHoursField" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="colonLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="minutesField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="startMinutesField" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="fwdSlash1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="startMonthField" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="fwdSlash2" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -153,20 +187,33 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="durationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="durationField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="courseLengthLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="courseLengthField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="classLengthLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="classLengthHoursField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="colonLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="classLengthMinutesField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="capacityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="capacityField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="courseCode" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="courseCodeField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="descriptionLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="descriptionScrollPane" pref="157" max="32767" attributes="0"/>
+                  <Component id="descriptionScrollPane" min="-2" pref="125" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="insertImageButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="insertVideoButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="insertLinkButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="commitButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="20" max="32767" attributes="0"/>
+                  <Component id="feedback" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -193,9 +240,9 @@
             <Property name="text" type="java.lang.String" value="Start Date:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="durationLabel">
+        <Component class="javax.swing.JLabel" name="courseLengthLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Duration (days):"/>
+            <Property name="text" type="java.lang.String" value="Course Length (in days):"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="capacityLabel">
@@ -208,9 +255,9 @@
             <Property name="text" type="java.lang.String" value="Course Description:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="durationField">
+        <Component class="javax.swing.JTextField" name="courseLengthField">
           <Properties>
-            <Property name="toolTipText" type="java.lang.String" value="Enter the number of days the course will last. Maximum duration is one week."/>
+            <Property name="toolTipText" type="java.lang.String" value="Enter the number of days the course will last."/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="startDayField">
@@ -255,10 +302,10 @@
         </Container>
         <Component class="javax.swing.JLabel" name="timeLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Time (24h format):"/>
+            <Property name="text" type="java.lang.String" value="Start Time (24h format):"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="hoursField">
+        <Component class="javax.swing.JTextField" name="startHoursField">
           <Properties>
             <Property name="text" type="java.lang.String" value="HH"/>
           </Properties>
@@ -268,7 +315,7 @@
             <Property name="text" type="java.lang.String" value=":"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="minutesField">
+        <Component class="javax.swing.JTextField" name="startMinutesField">
           <Properties>
             <Property name="text" type="java.lang.String" value="MM"/>
           </Properties>
@@ -283,77 +330,6 @@
             <Property name="toolTipText" type="java.lang.String" value="Select a lecturer for this course. The list is generated from the lecturers stored in the database. To add a new lecturer, use the Add Lecturer button."/>
           </Properties>
         </Component>
-        <Container class="javax.swing.JPanel" name="jPanel1">
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="insertImageButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="insertVideoButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="insertLinkButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="commitButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="70" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="commitButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="insertVideoButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="insertImageButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="insertLinkButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="0" pref="16" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JButton" name="commitButton">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Commit Changes"/>
-                <Property name="toolTipText" type="java.lang.String" value="Commit the changes to the database."/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="commitButtonActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="insertVideoButton">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Insert Video..."/>
-                <Property name="toolTipText" type="java.lang.String" value="Insert a video into the course description."/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="insertVideoButtonActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="insertImageButton">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Insert Image..."/>
-                <Property name="toolTipText" type="java.lang.String" value="Insert an image into the course description."/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="insertImageButtonActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="insertLinkButton">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Insert Hyperlink..."/>
-                <Property name="toolTipText" type="java.lang.String" value="Insert a customizable hyperlink into the course description."/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="insertLinkButtonActionPerformed"/>
-              </Events>
-            </Component>
-          </SubComponents>
-        </Container>
         <Component class="javax.swing.JLabel" name="fwdSlash1">
           <Properties>
             <Property name="text" type="java.lang.String" value="/"/>
@@ -375,6 +351,75 @@
         <Component class="javax.swing.JTextField" name="startYearField">
           <Properties>
             <Property name="text" type="java.lang.String" value="YYYY"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="classLengthLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Class Length (24h format):"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="classLengthHoursField">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="HH"/>
+            <Property name="toolTipText" type="java.lang.String" value="The duration of the daily class in hours. Decimal values can be used. Maximum length is 8 hours."/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="colonLabel2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value=":"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="classLengthMinutesField">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="MM"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="insertImageButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Insert Image..."/>
+            <Property name="toolTipText" type="java.lang.String" value="Insert an image into the course description."/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="insertImageButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="insertVideoButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Insert Video..."/>
+            <Property name="toolTipText" type="java.lang.String" value="Insert a video into the course description."/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="insertVideoButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="insertLinkButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Insert Hyperlink..."/>
+            <Property name="toolTipText" type="java.lang.String" value="Insert a customizable hyperlink into the course description."/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="insertLinkButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="commitButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Commit Changes"/>
+            <Property name="toolTipText" type="java.lang.String" value="Commit the changes to the database."/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="commitButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="feedback">
+        </Component>
+        <Component class="javax.swing.JLabel" name="courseCode">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Course Code:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="courseCodeField">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="The code for the course. Must be 6 characters long."/>
           </Properties>
         </Component>
       </SubComponents>
