@@ -184,13 +184,14 @@ public class CourseChangePane extends javax.swing.JPanel {
         fwdSlash1.setText("/");
 
         startMonthField.setText("MM");
+        startMonthField.setMinimumSize(new java.awt.Dimension(20, 20));
         startMonthField.setPreferredSize(new java.awt.Dimension(20, 20));
 
         fwdSlash2.setText("/");
 
         startYearField.setText("YYYY");
 
-        classLengthLabel.setText("Class Length (24h format):");
+        classLengthLabel.setText("Class Length:");
 
         classLengthHoursField.setText("HH");
         classLengthHoursField.setToolTipText("The duration of the daily class in hours. Decimal values can be used. Maximum length is 8 hours.");
@@ -413,8 +414,10 @@ public class CourseChangePane extends javax.swing.JPanel {
         int startDay = Integer.parseInt(startDayField.getText());
         int startMonth = Integer.parseInt(startMonthField.getText());
         int startYear = Integer.parseInt(startYearField.getText());
-        int startHours = Integer.parseInt(startHoursField.getText());
-        int startMinutes = Integer.parseInt(startMinutesField.getText());
+        String startHoursRaw = startHoursField.getText();
+        String startMinutesRaw = startMinutesField.getText();
+        int startHours = Integer.parseInt(startHoursRaw);
+        int startMinutes = Integer.parseInt(startMinutesRaw);
         String courseLength = courseLengthField.getText();
         int classLengthHours = Integer.parseInt(classLengthHoursField.getText());
         int classLengthMinutes = Integer.parseInt(classLengthMinutesField.getText());
@@ -481,11 +484,10 @@ public class CourseChangePane extends javax.swing.JPanel {
         //create and send message if all data is verified
         if(sendMessage) {
             //format remaining data
-            int fee = Integer.parseInt(feeRaw.split(".")[0]) * 100;
-            if(!feeRaw.split(".")[1].equals("")) {
-                fee += Integer.parseInt(feeRaw.split(".")[1]);
-            }
-            startTimeString = startHours + ":" + startMinutes;
+            System.out.println(feeRaw);
+            double feeDouble = Double.parseDouble(feeRaw);
+            String fee = new Integer((int)(feeDouble * 100)).toString();
+            startTimeString = startHoursRaw + ":" + startMinutesRaw;
             int classLength = (classLengthHours * 60) + classLengthMinutes;
             
             //check if a course by this code exists
@@ -506,7 +508,7 @@ public class CourseChangePane extends javax.swing.JPanel {
                         ", description = '" + description + "', " + "startDate = '" + 
                         startDateString + "', courseDuration = " + courseLength + 
                         ", classDuration = " + classLength + ", capacity = " +
-                        capacity + ", startTime = '" + startTimeString + ") " +
+                        capacity + ", startTime = '" + startTimeString + "') " +
                         "WHERE code = '" + code + "';";
             }
             else {
@@ -514,7 +516,7 @@ public class CourseChangePane extends javax.swing.JPanel {
                         "', '" + location + "', " + fee + ", '" + description + 
                         "', '" + startDateString + "', " + courseLength + 
                         ", " + classLength + ", " + capacity + ", '" + 
-                        startTimeString + ");";
+                        startTimeString + "');";
             }
             
             //send query

@@ -48,6 +48,7 @@ public class Connector {
                 int port = (Integer) con.getContent().get(ConnectionMessage.PORT);
                 //SOCKET = new AdminClientSocket(port, DEFAULT_IP);
                 SOCKET = new AdminClientSocket(port, InetAddress.getLocalHost().getHostAddress());
+                new Thread(SOCKET).start();
                 
                 output = true;
             }

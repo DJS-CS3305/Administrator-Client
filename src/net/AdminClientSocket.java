@@ -13,8 +13,10 @@ import log.ErrorLogger;
  * 
  * @author Stephen Fahy
  */
-public class AdminClientSocket extends Thread {
+public class AdminClientSocket implements Runnable {
     private Socket socket;
+    private ObjectInputStream in;
+    private ObjectOutputStream out;
     
     /**
      * Constructor.
@@ -39,7 +41,6 @@ public class AdminClientSocket extends Thread {
      */
     public void sendMessage(Message msg) {
         try {
-            ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
             out.writeObject(msg);
             out.flush();
         }
@@ -59,7 +60,6 @@ public class AdminClientSocket extends Thread {
         Message output = null;
         
         try {
-            ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
             output = (Message) in.readObject();
         }
         catch(Exception e) {
@@ -68,6 +68,22 @@ public class AdminClientSocket extends Thread {
         }
         
         return output;
+    }
+    
+    /**
+     * Connects the I/O streams.
+     */
+    @Override
+    public void run() {
+        try {
+            out = new ObjectOutputStream(socket.getOutputStream());
+            out.flush();
+            in = new ObjectInputStream(socket.getInputStream());
+        }
+        catch(Exception e) {
+            ErrorLogger.get().log(e.toString());
+            e.printStackTrace();
+        }
     }
     
     /**
