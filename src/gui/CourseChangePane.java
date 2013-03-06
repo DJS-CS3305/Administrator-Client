@@ -19,13 +19,15 @@ import net.ResultMessage;
  * 
  * @author saf3
  */
-public class CourseChangePane extends javax.swing.JPanel {
+public class CourseChangePane extends javax.swing.JPanel implements AcceptsInsertions{
+    private javax.swing.JFrame insertWindow;
     
     /**
      * Creates new form CourseEditPane.
      */
     public CourseChangePane() {
         initComponents();
+        insertWindow = null;
         
         //fill lecturer dropdown with list of lecturers
         QueryMessage query = new QueryMessage(Connector.getNextId(), 
@@ -516,7 +518,7 @@ public class CourseChangePane extends javax.swing.JPanel {
                         "', '" + location + "', " + fee + ", '" + description + 
                         "', '" + startDateString + "', " + courseLength + 
                         ", " + classLength + ", " + capacity + ", '" + 
-                        startTimeString + "');";
+                        startTimeString + "', 0);";
             }
             
             //send query
@@ -537,8 +539,21 @@ public class CourseChangePane extends javax.swing.JPanel {
 
     private void insertLinkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertLinkButtonActionPerformed
         //open insert hyperlink window and take given pseudoHTML to insert into description.
+        InsertLinkWindow window = new InsertLinkWindow(this);
+        new Thread(window).start();
+        insertWindow = window;
     }//GEN-LAST:event_insertLinkButtonActionPerformed
 
+    /**
+     * Inserts the given string into the description pane at the caret position.
+     * 
+     * @param insertion 
+     */
+    @Override
+    public void insert(String insertion) {
+        descriptionField.insert(insertion, descriptionField.getCaretPosition());
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField capacityField;
     private javax.swing.JLabel capacityLabel;

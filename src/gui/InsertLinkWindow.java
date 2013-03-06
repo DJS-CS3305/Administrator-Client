@@ -4,19 +4,53 @@
  */
 package gui;
 
+import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
+
 /**
  * Window for inserting hyperlinks easily into the descriptions of courses
  * and lecturers.
  * 
  * @author saf3
  */
-public class InsertLinkWindow extends javax.swing.JFrame {
-
+public class InsertLinkWindow extends javax.swing.JFrame implements Runnable {
+    private String link;
+    private String text;
+    private AcceptsInsertions parent;
+    
     /**
      * Creates new form InsertLinkWindow
      */
-    public InsertLinkWindow() {
+    public InsertLinkWindow(AcceptsInsertions parent) {
         initComponents();
+        link = "";
+        text = "";
+        this.parent = parent;
+        this.setVisible(true);
+    }
+    
+    /**
+     * Waits for valid user input and relays it to the parent.
+     */
+    @Override
+    public void run() {
+    }
+    
+    /**
+     * @return True if the input is valid.
+     */
+    private boolean validateInput() {
+        boolean output = false;
+        
+        if(link.startsWith("http://")) {
+            output = true;
+        }
+        else if(link.startsWith("www.")) {
+            link = "http://" + link;
+            output = true;
+        }
+        
+        return output;
     }
 
     /**
@@ -46,6 +80,11 @@ public class InsertLinkWindow extends javax.swing.JFrame {
         linkToField.setText("http://");
 
         insertButton.setText("Insert");
+        insertButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                insertButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -85,6 +124,17 @@ public class InsertLinkWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void insertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertButtonActionPerformed
+        link = linkToField.getText();
+        text = textField.getText();
+        
+        if(validateInput()) {
+            parent.insert("<link to=" + link + " text=" + text + " />");
+            //close the window
+            this.dispose();
+        }
+    }//GEN-LAST:event_insertButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -115,7 +165,7 @@ public class InsertLinkWindow extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InsertLinkWindow().setVisible(true);
+                //new InsertLinkWindow().setVisible(true);
             }
         });
     }
