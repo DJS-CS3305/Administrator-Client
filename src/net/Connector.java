@@ -18,6 +18,7 @@ public class Connector {
     private static final int DEFAULT_AUTH_PORT = 579;
     private static AdminClientSocket SOCKET;
     private static int ID;
+    private static String USERNAME;
     
     /**
      * Tries to connect to the server with the given login details.
@@ -49,6 +50,7 @@ public class Connector {
                 //SOCKET = new AdminClientSocket(port, DEFAULT_IP);
                 SOCKET = new AdminClientSocket(port, InetAddress.getLocalHost().getHostAddress());
                 new Thread(SOCKET).start();
+                USERNAME = username;
                 
                 output = true;
             }
@@ -113,5 +115,8 @@ public class Connector {
     public static int getNextId() {
         ID++;
         return ID;
+    }
+    public static String getUsername() {
+        return USERNAME;
     }
 }

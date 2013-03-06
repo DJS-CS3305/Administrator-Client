@@ -4,17 +4,28 @@
  */
 package gui;
 
+import java.util.HashMap;
+import net.AckMessage;
+import net.Connector;
+import net.UserReplyMessage;
+
 /**
- *
+ * Class for sending replies to unanswered user messages. The replies will be
+ * visible on the website for the user.
+ * 
  * @author saf3
  */
 public class ReplyPanel extends javax.swing.JPanel {
-
+    private int originalMessageId;
+    
     /**
-     * Creates new form ReplyPanel
+     * Constructor. The row here is a row from the UnrepliedUserMessages view.
+     * @param row Map of column name : value representing a courses table row. Column names match the DB schema.
      */
-    public ReplyPanel() {
+    public ReplyPanel(HashMap<String, String> row) {
         initComponents();
+        originalMessageId = Integer.parseInt(row.get("id"));
+        originalMessage.setText(row.get("content"));
     }
 
     /**
@@ -87,6 +98,11 @@ public class ReplyPanel extends javax.swing.JPanel {
         jSeparator1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         sendButton.setText("Send");
+        sendButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sendButtonActionPerformed(evt);
+            }
+        });
 
         jPanel3.setToolTipText("Feedback from the message sending will appear here.");
 
@@ -147,6 +163,26 @@ public class ReplyPanel extends javax.swing.JPanel {
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
+        //try to send the reply to the server
+        String replyText = replyField.getText();
+        UserReplyMessage urm = new UserReplyMessage(Connector.getNextId(),
+                originalMessageId, replyText);
+        Connector.getSocket().sendMessage(urm);
+        AckMessage response = (AckMessage) Connector.getSocket().receiveMessage();
+        
+        if((Boolean) response.getContent().get(AckMessage.VALUE)) {
+            //sent successfully
+            feedbackLine.setText("Reply sent successfully.");
+        }
+        else {
+            //sent unsuccessfully
+            feedbackLine.setText("Reply sent unsuccessfully. Another admin may have " +
+                    "replied already, or there was a server fault.");
+        }
+    }//GEN-LAST:event_sendButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel feedbackLine;
     private javax.swing.JPanel jPanel1;

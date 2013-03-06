@@ -4,6 +4,7 @@
  */
 package gui;
 
+import java.util.HashMap;
 import net.Connector;
 import net.QueryMessage;
 import net.ResultMessage;
@@ -22,6 +23,16 @@ public class LecturerChangePane extends javax.swing.JPanel implements AcceptsIns
     public LecturerChangePane() {
         initComponents();
         insertWindow = null;
+    }
+    
+    /**
+     * Creates new form LecturerChangePane from a selection.
+     * @param row Map of column name : value representing a courses table row. Column names match the DB schema.
+     */
+    public LecturerChangePane(HashMap<String, String> row) {
+        this();
+        nameField.setText(row.get("name"));
+        descriptionField.setText(row.get("description"));
     }
 
     /**
