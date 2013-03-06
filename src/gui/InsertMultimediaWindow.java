@@ -10,13 +10,57 @@ package gui;
  * 
  * @author saf3
  */
-public class InsertMultimediaWindow extends javax.swing.JFrame {
-
+public class InsertMultimediaWindow extends javax.swing.JFrame implements Runnable {
+    private String link;
+    private int width;
+    private int height;
+    private boolean type; //true = images, false = video
+    private AcceptsInsertions parent;
+    
     /**
-     * Creates new form InsertMultimediaWindow
+     * Constructor.
+     * 
+     * @param parent
+     * @param type True for images, false for video.
      */
-    public InsertMultimediaWindow() {
+    public InsertMultimediaWindow(AcceptsInsertions parent, boolean type) {
         initComponents();
+        this.parent = parent;
+        this.type = type;
+        link = "";
+        width = 0;
+        height = 0;
+        this.setTitle("Insert " + ((type) ? "Image..." : "Video..."));
+        
+        this.setVisible(true);
+    }
+    
+    /**
+     * Waits for valid user input and relays it to the parent.
+     */
+    @Override
+    public void run() {
+    }
+    
+    /**
+     * @return True if the input is valid.
+     */
+    private boolean validateInput() {
+        boolean output = false;
+        
+        if(link.startsWith("http://")) {
+            output = true;
+        }
+        else if(link.startsWith("www.")) {
+            link = "http://" + link;
+            output = true;
+        }
+        
+        if(output) {
+            output = (width > 0 && height > 0);
+        }
+        
+        return output;
     }
 
     /**
@@ -37,7 +81,7 @@ public class InsertMultimediaWindow extends javax.swing.JFrame {
         pxLabel1 = new javax.swing.JLabel();
         yField = new javax.swing.JTextField();
         pxLabel2 = new javax.swing.JLabel();
-        submitButton = new javax.swing.JButton();
+        insertButton = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -50,7 +94,7 @@ public class InsertMultimediaWindow extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Insert...");
         setMinimumSize(new java.awt.Dimension(400, 125));
         setResizable(false);
@@ -58,7 +102,7 @@ public class InsertMultimediaWindow extends javax.swing.JFrame {
         URLLabel.setText("URL: ");
 
         URLField.setText("http://");
-        URLField.setToolTipText("Enter the URL of the multimedia item to insert.");
+        URLField.setToolTipText("Enter the URL of the multimedia item to insert. This must start with \"http://\" or \"www.\" minus the quotation marks. The URL must also point directly to an image or video file, ie: the end of the URL must have a file extension such as \".png\" or \".gif\" for images, or \".avi\" or \".mp4\" for video.");
 
         xLabel.setText("Width:");
 
@@ -74,7 +118,12 @@ public class InsertMultimediaWindow extends javax.swing.JFrame {
 
         pxLabel2.setText("px");
 
-        submitButton.setText("Submit");
+        insertButton.setText("Insert");
+        insertButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                insertButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,7 +152,7 @@ public class InsertMultimediaWindow extends javax.swing.JFrame {
                                     .addComponent(pxLabel2)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(168, 168, 168)
-                        .addComponent(submitButton)))
+                        .addComponent(insertButton)))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -125,12 +174,26 @@ public class InsertMultimediaWindow extends javax.swing.JFrame {
                     .addComponent(yField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pxLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                .addComponent(submitButton)
+                .addComponent(insertButton)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void insertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertButtonActionPerformed
+        link = URLField.getText();
+        width = Integer.parseInt(xField.getText());
+        height = Integer.parseInt(yField.getText());
+        
+        if(validateInput()) {
+            String typeString = (type) ? "image" : "video";
+            parent.insert("<" + typeString + " link=" + link + " height=" + 
+                    height + " width=" + width + " />");
+            //close the window
+            this.dispose();
+        }
+    }//GEN-LAST:event_insertButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,17 +225,17 @@ public class InsertMultimediaWindow extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InsertMultimediaWindow().setVisible(true);
+                //new InsertMultimediaWindow().setVisible(true);
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField URLField;
     private javax.swing.JLabel URLLabel;
+    private javax.swing.JButton insertButton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel pxLabel1;
     private javax.swing.JLabel pxLabel2;
-    private javax.swing.JButton submitButton;
     private javax.swing.JTextField xField;
     private javax.swing.JLabel xLabel;
     private javax.swing.JTextField yField;

@@ -203,7 +203,7 @@ public class CourseChangePane extends javax.swing.JPanel implements AcceptsInser
         classLengthMinutesField.setText("MM");
 
         insertImageButton.setText("Insert Image...");
-        insertImageButton.setToolTipText("Insert an image into the course description.");
+        insertImageButton.setToolTipText("Insert an image into the course description. The image will appear in the description field at the cursor as a coded line. Note: editing this coded line manually is not recommended.");
         insertImageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 insertImageButtonActionPerformed(evt);
@@ -211,7 +211,7 @@ public class CourseChangePane extends javax.swing.JPanel implements AcceptsInser
         });
 
         insertVideoButton.setText("Insert Video...");
-        insertVideoButton.setToolTipText("Insert a video into the course description.");
+        insertVideoButton.setToolTipText("Insert a video into the course description. The video will appear in the description field at the cursor as a coded line. Note: editing this coded line manually is not recommended.");
         insertVideoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 insertVideoButtonActionPerformed(evt);
@@ -219,7 +219,7 @@ public class CourseChangePane extends javax.swing.JPanel implements AcceptsInser
         });
 
         insertLinkButton.setText("Insert Hyperlink...");
-        insertLinkButton.setToolTipText("Insert a customizable hyperlink into the course description.");
+        insertLinkButton.setToolTipText("Insert a hyperlink into the course description. The link will appear in the description field at the cursor as a coded line. Note: editing this coded line manually is not recommended.");
         insertLinkButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 insertLinkButtonActionPerformed(evt);
@@ -395,7 +395,7 @@ public class CourseChangePane extends javax.swing.JPanel implements AcceptsInser
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 48, Short.MAX_VALUE))
+                .addGap(0, 39, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -531,10 +531,16 @@ public class CourseChangePane extends javax.swing.JPanel implements AcceptsInser
 
     private void insertImageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertImageButtonActionPerformed
         //open insert image window and take given pseudoHTML to insert into description.
+        InsertMultimediaWindow window = new InsertMultimediaWindow(this, true);
+        new Thread(window).start();
+        insertWindow = window;
     }//GEN-LAST:event_insertImageButtonActionPerformed
 
     private void insertVideoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertVideoButtonActionPerformed
         //open insert video window and take given pseudoHTML to insert into description.
+        InsertMultimediaWindow window = new InsertMultimediaWindow(this, false);
+        new Thread(window).start();
+        insertWindow = window;
     }//GEN-LAST:event_insertVideoButtonActionPerformed
 
     private void insertLinkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertLinkButtonActionPerformed

@@ -380,7 +380,7 @@
         <Component class="javax.swing.JButton" name="insertImageButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Insert Image..."/>
-            <Property name="toolTipText" type="java.lang.String" value="Insert an image into the course description."/>
+            <Property name="toolTipText" type="java.lang.String" value="Insert an image into the course description. The image will appear in the description field at the cursor as a coded line. Note: editing this coded line manually is not recommended."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="insertImageButtonActionPerformed"/>
@@ -389,7 +389,7 @@
         <Component class="javax.swing.JButton" name="insertVideoButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Insert Video..."/>
-            <Property name="toolTipText" type="java.lang.String" value="Insert a video into the course description."/>
+            <Property name="toolTipText" type="java.lang.String" value="Insert a video into the course description. The video will appear in the description field at the cursor as a coded line. Note: editing this coded line manually is not recommended."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="insertVideoButtonActionPerformed"/>
@@ -398,7 +398,7 @@
         <Component class="javax.swing.JButton" name="insertLinkButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Insert Hyperlink..."/>
-            <Property name="toolTipText" type="java.lang.String" value="Insert a customizable hyperlink into the course description."/>
+            <Property name="toolTipText" type="java.lang.String" value="Insert a hyperlink into the course description. The link will appear in the description field at the cursor as a coded line. Note: editing this coded line manually is not recommended."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="insertLinkButtonActionPerformed"/>

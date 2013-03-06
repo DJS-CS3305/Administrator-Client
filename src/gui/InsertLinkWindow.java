@@ -68,7 +68,7 @@ public class InsertLinkWindow extends javax.swing.JFrame implements Runnable {
         textField = new javax.swing.JTextField();
         insertButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Insert Hyperlink...");
         setMinimumSize(new java.awt.Dimension(400, 100));
         setResizable(false);
