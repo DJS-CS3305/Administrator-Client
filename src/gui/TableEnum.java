@@ -12,26 +12,29 @@ package gui;
  * @author Stephen Fahy
  */
 public enum TableEnum {
-    COURSES("SELECT * FROM Courses;", "Edit Course Details..."), 
-    LECTURERS("SELECT * FROM Lecturers;", "Edit Lecturer Details..."), 
-    USERS("SELECT * FROM Users;", ""), 
-    UNREPLIED_MESSAGES("SELECT * FROM UnrepliedUserMessages;", "Reply..."),
+    COURSES("SELECT * FROM Courses;", "Edit Course Details...", "code"), 
+    LECTURERS("SELECT * FROM Lecturers;", "Edit Lecturer Details...", "name"), 
+    USERS("SELECT * FROM Users;", "", "username"), 
+    UNREPLIED_MESSAGES("SELECT * FROM UnrepliedUserMessages;", "Reply...", "username"),
     REGISTRATIONS("SELECT * FROM Registrations WHERE daysRemaining > 0;", 
-            "Give Refund...");
+            "Give Refund...", "courseCode");
     
     private String query;
     private String buttonText;
     private boolean buttonEnabled;
+    private String key;
     
     /**
      * Constructor.
      * @param query The default query to get this table.
      * @param buttonText Text of the context-sensitive button; null for disabled.
+     * @param key A key of the table that will be the first column in the display.
      */
-    private TableEnum(String query, String buttonText) {
+    private TableEnum(String query, String buttonText, String key) {
         this.query = query;
         this.buttonText = buttonText;
         this.buttonEnabled = !(buttonText.equals(""));
+        this.key = key;
     }
     
     /**
@@ -48,5 +51,8 @@ public enum TableEnum {
     }
     public boolean isButtonEnabled() {
         return buttonEnabled;
+    }
+    public String getKey() {
+        return key;
     }
 }
