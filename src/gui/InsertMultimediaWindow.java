@@ -188,8 +188,8 @@ public class InsertMultimediaWindow extends javax.swing.JFrame implements Runnab
         
         if(validateInput()) {
             String typeString = (type) ? "image" : "video";
-            parent.insert("<" + typeString + " link=" + link + " height=" + 
-                    height + " width=" + width + " />");
+            parent.insert("<" + typeString + "start link=" + link + " height=" + 
+                    height + " width=" + width + " " + typeString + "end>");
             //close the window
             this.dispose();
         }

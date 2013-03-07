@@ -4,9 +4,6 @@
  */
 package gui;
 
-import java.awt.Toolkit;
-import java.awt.event.WindowEvent;
-
 /**
  * Window for inserting hyperlinks easily into the descriptions of courses
  * and lecturers.
@@ -129,7 +126,7 @@ public class InsertLinkWindow extends javax.swing.JFrame implements Runnable {
         text = textField.getText();
         
         if(validateInput()) {
-            parent.insert("<link to=" + link + " text=" + text + " />");
+            parent.insert("<linkstart to=" + link + " text=" + text + "#@# linkend>");
             //close the window
             this.dispose();
         }

@@ -1,5 +1,7 @@
 package gui;
 
+import net.Connector;
+
 /**
  * Class for the main frame of the GUI. The frame holds the menu and the
  * main pane that can be changed to other panes as needed.
@@ -162,7 +164,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_connectMenuItemActionPerformed
 
     private void disconnectMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disconnectMenuItemActionPerformed
-        //disconnect
+        Connector.disconnect();
         contents.setViewportView(new ConnectionPane());
     }//GEN-LAST:event_disconnectMenuItemActionPerformed
 
@@ -199,7 +201,7 @@ public class MainFrame extends javax.swing.JFrame {
      * 
      * @param enabled True for enabled, false for disabled.
      */
-    public void setConnectionReliantItems(boolean enabled) {
+    public final void setConnectionReliantItems(boolean enabled) {
         disconnectMenuItem.setEnabled(enabled);
         viewCoursesMenuItem.setEnabled(enabled);
         viewLecturersMenuItem.setEnabled(enabled);
