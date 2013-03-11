@@ -54,6 +54,7 @@ public class ReplyPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(640, 460));
 
         originalMessage.setEditable(false);
+        originalMessage.setBackground(new java.awt.Color(255, 255, 204));
         originalMessage.setColumns(20);
         originalMessage.setRows(5);
         jScrollPane1.setViewportView(originalMessage);
