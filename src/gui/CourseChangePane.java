@@ -65,23 +65,28 @@ public class CourseChangePane extends javax.swing.JPanel implements AcceptsInser
         capacityField.setText(row.get("capacity"));
         descriptionField.setText(row.get("description"));
         courseCodeField.setText(row.get("code"));
+        nameField.setText(row.get("name"));
         
         //display fee field with decimal point.
         int feeInt = Integer.parseInt(row.get("fee"));
         feeField.setText((feeInt / 100) + "." + (feeInt % 100));
         
         //format the date as a long into the day fields.
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-        SimpleDateFormat timeFormat = new SimpleDateFormat("HH.mm");
-        Date date = new Date(Long.parseLong(row.get("startDate")));
-        Date time = new Date(Long.parseLong(row.get("startTime")));
-        String[] dateParts = dateFormat.format(date).split(".");
-        String[] timeParts = timeFormat.format(time).split(".");
-        startDayField.setText(dateParts[0]);
+        String date = row.get("startDate");
+        String time = row.get("startTime");
+        String[] dateParts = date.split("-");
+        String[] timeParts = time.split(":");
+        startDayField.setText(dateParts[2]);
         startMonthField.setText(dateParts[1]);
-        startYearField.setText(dateParts[2]);
+        startYearField.setText(dateParts[0]);
         startHoursField.setText(timeParts[0]);
-        startMinutesField.setText(timeParts[1]);
+        if(timeParts[1].length() <= 1) {
+            //adding leading zero
+            startMinutesField.setText("0" + timeParts[1]);
+        }
+        else {
+            startMinutesField.setText(timeParts[1]);
+        }
         
         //add course and class durations
         courseLengthField.setText(row.get("courseDuration"));
@@ -138,6 +143,8 @@ public class CourseChangePane extends javax.swing.JPanel implements AcceptsInser
         feedback = new javax.swing.JLabel();
         courseCode = new javax.swing.JLabel();
         courseCodeField = new javax.swing.JTextField();
+        nameLabel = new javax.swing.JLabel();
+        nameField = new javax.swing.JTextField();
 
         setPreferredSize(new java.awt.Dimension(600, 400));
 
@@ -236,95 +243,100 @@ public class CourseChangePane extends javax.swing.JPanel implements AcceptsInser
 
         courseCode.setText("Course Code:");
 
-        courseCodeField.setToolTipText("The code for the course. Must be 6 characters long.");
+        courseCodeField.setToolTipText("The code for the course. Must be 6 characters long. WARNING: cannot be edited after the course has been added.");
+
+        nameLabel.setText("Name:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(startDateLabel, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(courseLengthLabel))
-                    .addComponent(locationLabel)
-                    .addComponent(lecturerLabel)
-                    .addComponent(capacityLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lecturerLabel)
+                .addGap(79, 79, 79)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(lecturerField, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(158, 158, 158)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(courseLengthField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
-                                    .addComponent(capacityField, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addGap(76, 76, 76))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(startDayField, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fwdSlash1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(startMonthField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fwdSlash2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(startYearField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(11, 11, 11)))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(timeLabel)
-                            .addComponent(classLengthLabel)
-                            .addComponent(courseCode))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(startHoursField, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                                    .addComponent(classLengthHoursField))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(colonLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(startMinutesField, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(colonLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(classLengthMinutesField))))
-                            .addComponent(courseCodeField))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(locationField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lecturerField, javax.swing.GroupLayout.Alignment.LEADING, 0, 394, Short.MAX_VALUE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(descriptionScrollPane))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(descriptionLabel)
-                            .addComponent(feeLabel))
-                        .addGap(29, 29, 29)
-                        .addComponent(euroSign)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(feeField, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(2, 2, 2))
+                            .addComponent(courseCode)
+                            .addComponent(classLengthLabel))
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(descriptionScrollPane)
+                        .addGap(2, 2, 2))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(feedback)
+                        .addContainerGap(570, Short.MAX_VALUE))))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nameLabel)
+                            .addComponent(locationLabel)
+                            .addComponent(feeLabel)
+                            .addComponent(startDateLabel))
+                        .addGap(69, 69, 69)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(euroSign)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(feeField, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(locationField, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(courseCodeField, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(classLengthHoursField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addComponent(startDayField, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(fwdSlash1)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(startMonthField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(fwdSlash2)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(startYearField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(timeLabel)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(startHoursField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addComponent(colonLabel)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(startMinutesField, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addComponent(colonLabel2)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(classLengthMinutesField, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(courseLengthLabel)
+                            .addComponent(capacityLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(capacityField, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(courseLengthField, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(descriptionLabel)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(insertImageButton)
                         .addGap(18, 18, 18)
                         .addComponent(insertVideoButton)
                         .addGap(18, 18, 18)
                         .addComponent(insertLinkButton)
                         .addGap(18, 18, 18)
-                        .addComponent(commitButton))
-                    .addComponent(feedback))
-                .addContainerGap(72, Short.MAX_VALUE))
+                        .addComponent(commitButton)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -334,25 +346,29 @@ public class CourseChangePane extends javax.swing.JPanel implements AcceptsInser
                     .addComponent(lecturerField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nameLabel)
+                    .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(locationLabel)
                     .addComponent(locationField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(feeLabel)
-                    .addComponent(feeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(euroSign))
+                    .addComponent(euroSign)
+                    .addComponent(feeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(startDateLabel)
                     .addComponent(startDayField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(timeLabel)
-                    .addComponent(startHoursField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(colonLabel)
-                    .addComponent(startMinutesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fwdSlash1)
                     .addComponent(startMonthField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fwdSlash2)
-                    .addComponent(startYearField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(startYearField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(timeLabel)
+                    .addComponent(startHoursField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(colonLabel)
+                    .addComponent(startMinutesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(courseLengthLabel)
@@ -370,15 +386,15 @@ public class CourseChangePane extends javax.swing.JPanel implements AcceptsInser
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(descriptionLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(descriptionScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(descriptionScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(feedback)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(insertImageButton)
                     .addComponent(insertVideoButton)
                     .addComponent(insertLinkButton)
                     .addComponent(commitButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addComponent(feedback)
                 .addContainerGap())
         );
 
@@ -394,8 +410,8 @@ public class CourseChangePane extends javax.swing.JPanel implements AcceptsInser
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 39, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -405,9 +421,10 @@ public class CourseChangePane extends javax.swing.JPanel implements AcceptsInser
         boolean sendMessage = true;
         
         String startDateString = "";
-        String startTimeString = "";
+        String startTimeString;
         
         String code = courseCodeField.getText();
+        String name = nameField.getText();
         String lecturer = lecturerField.getSelectedItem().toString();
         String location = locationField.getText();
         String capacity = capacityField.getText();
@@ -505,20 +522,21 @@ public class CourseChangePane extends javax.swing.JPanel implements AcceptsInser
             String query = "";
             
             if(exists) {
-                query += "UPDATE Courses SET (lecturer = '" + lecturer + 
+                query += "UPDATE Courses SET lecturer = '" + lecturer + 
                         "', location = '" + location + "', fee = " + fee + 
-                        ", description = '" + description + "', " + "startDate = '" + 
-                        startDateString + "', courseDuration = " + courseLength + 
-                        ", classDuration = " + classLength + ", capacity = " +
-                        capacity + ", startTime = '" + startTimeString + "') " +
+                        ", description = '" + sanitize(description) + "', " + 
+                        "startDate = '" + startDateString + "', courseDuration = " + 
+                        courseLength + ", classDuration = " + classLength + 
+                        ", capacity = " + capacity + ", startTime = '" + 
+                        startTimeString +  "', name = '" + name + "' " +
                         "WHERE code = '" + code + "';";
             }
             else {
-                query += "INSERT INTO Courses VALUES ('" + code + "', '" + lecturer + 
-                        "', '" + location + "', " + fee + ", '" + description + 
-                        "', '" + startDateString + "', " + courseLength + 
-                        ", " + classLength + ", " + capacity + ", '" + 
-                        startTimeString + "', 0);";
+                query += "INSERT INTO Courses VALUES ('" + code + "', '" + name + 
+                        "', '" + lecturer + "', '" + location + "', " + fee + 
+                        ", '" + sanitize(description) + "', '" + startDateString + 
+                        "', " + courseLength + ", " + classLength + ", " + capacity + 
+                        ", '" + startTimeString + "', 0);";
             }
             
             //send query
@@ -560,6 +578,19 @@ public class CourseChangePane extends javax.swing.JPanel implements AcceptsInser
         descriptionField.insert(insertion, descriptionField.getCaretPosition());
     }
     
+    /**
+     * Sanitizes the description into an SQL-friendly form by replacing all
+     * quotes and double quotes with escape character versions.
+     * 
+     * @param description
+     * @return 
+     */
+    private String sanitize(String description) {
+        String output = description.replaceAll("\"", "\\\"");
+        output = output.replaceAll("'", "\\'");
+        return output;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField capacityField;
     private javax.swing.JLabel capacityLabel;
@@ -590,6 +621,8 @@ public class CourseChangePane extends javax.swing.JPanel implements AcceptsInser
     private javax.swing.JLabel lecturerLabel;
     private javax.swing.JTextField locationField;
     private javax.swing.JLabel locationLabel;
+    private javax.swing.JTextField nameField;
+    private javax.swing.JLabel nameLabel;
     private javax.swing.JLabel startDateLabel;
     private javax.swing.JTextField startDayField;
     private javax.swing.JTextField startHoursField;

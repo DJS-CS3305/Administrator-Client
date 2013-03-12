@@ -33,6 +33,9 @@ public class LecturerChangePane extends javax.swing.JPanel implements AcceptsIns
         this();
         nameField.setText(row.get("name"));
         descriptionField.setText(row.get("description"));
+        
+        //disable editing of name to avoid errors
+        nameField.setEditable(false);
     }
 
     /**
@@ -133,6 +136,8 @@ public class LecturerChangePane extends javax.swing.JPanel implements AcceptsIns
         descriptionField.setRows(5);
         jScrollPane1.setViewportView(descriptionField);
 
+        nameField.setToolTipText("The name of the lecturer. WARNING: This is unable to be edited after it is added.");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -203,12 +208,12 @@ public class LecturerChangePane extends javax.swing.JPanel implements AcceptsIns
         String query;
         
         if(exists) {
-            query = "UPDATE Lecturers SET description = '" + description + "' WHERE " +
-                    "name = '" + name + "';";
+            query = "UPDATE Lecturers SET description = '" + sanitize(description) + 
+                    "' WHERE name = '" + name + "';";
         }
         else {
-            query = "INSERT INTO Lecturers VALUES ('" + name + "', '" + description +
-                    "');";
+            query = "INSERT INTO Lecturers VALUES ('" + name + "', '" + 
+                    sanitize(description) + "');";
         }
         
         qm = new QueryMessage(Connector.getNextId(), query);
@@ -246,6 +251,19 @@ public class LecturerChangePane extends javax.swing.JPanel implements AcceptsIns
     @Override
     public void insert(String insertion) {
         descriptionField.insert(insertion, descriptionField.getCaretPosition());
+    }
+    
+    /**
+     * Sanitizes the description into an SQL-friendly form by replacing all
+     * quotes and double quotes with escape character versions.
+     * 
+     * @param description
+     * @return 
+     */
+    private String sanitize(String description) {
+        String output = description.replaceAll("\"", "\\\"");
+        output = output.replaceAll("'", "\\'");
+        return output;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
