@@ -14,8 +14,8 @@ import log.ErrorLogger;
  * @author Stephen Fahy
  */
 public class Connector {
-    //private static final String DEFAULT_IP = "localhost";
-    private static final int DEFAULT_AUTH_PORT = 579;
+    private static final String DEFAULT_ADDR = "djs.csproject.org";
+    private static final int DEFAULT_AUTH_PORT = 40579;
     private static AdminClientSocket SOCKET;
     private static int ID;
     private static String USERNAME;
@@ -31,8 +31,7 @@ public class Connector {
         boolean output = false;
         
         try {
-            //Socket authSocket = new Socket(DEFAULT_IP, DEFAULT_AUTH_PORT);
-            Socket authSocket = new Socket(InetAddress.getLocalHost(), DEFAULT_AUTH_PORT);
+            Socket authSocket = new Socket(InetAddress.getByName(DEFAULT_ADDR), DEFAULT_AUTH_PORT);
             ObjectOutputStream authOut = new ObjectOutputStream(authSocket.getOutputStream());
             authOut.flush();
             String passhash = encrypt(password);
@@ -47,8 +46,8 @@ public class Connector {
             if(reply instanceof ConnectionMessage) {
                 ConnectionMessage con = (ConnectionMessage) reply;
                 int port = (Integer) con.getContent().get(ConnectionMessage.PORT);
-                //SOCKET = new AdminClientSocket(port, DEFAULT_IP);
-                SOCKET = new AdminClientSocket(port, InetAddress.getLocalHost().getHostAddress());
+                SOCKET = new AdminClientSocket(port, 
+                        InetAddress.getByName(DEFAULT_ADDR).getHostAddress());
                 new Thread(SOCKET).start();
                 USERNAME = username;
                 

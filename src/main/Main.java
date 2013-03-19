@@ -1,6 +1,6 @@
 package main;
 
-import test.*;
+import gui.MainFrame;
 
 /**
  * Main class of the administrator client.
@@ -9,6 +9,6 @@ import test.*;
  */
 public class Main {
     public static void main(String[] args) {
-        ClientTest.test();
+        MainFrame.main(args);
     }
 }
