@@ -173,47 +173,55 @@ public class ViewPane extends javax.swing.JPanel {
     private void contextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contextButtonActionPerformed
         //do something based on table type
         
-        if(tableType == TableEnum.REGISTRATIONS) {
-            //giving refunds
-            HashMap<String, String> row = extractSelectedRow();
-            String username = row.get("username");
-            String courseCode = row.get("courseCode");
+        if(table.getSelectedRow() != -1) {
+            //valid row selected
             
-            RefundMessage msg = new RefundMessage(Connector.getNextId(), 
-                    username, courseCode);
-            Connector.getSocket().sendMessage(msg);
-            AckMessage reply = (AckMessage) Connector.getSocket().receiveMessage();
-            
-            if((Boolean) reply.getContent().get(AckMessage.VALUE)) {
-                //refund processed successfully
-                feedback.setText("Refund given.");
+            if(tableType == TableEnum.REGISTRATIONS) {
+                //giving refunds
+                HashMap<String, String> row = extractSelectedRow();
+                String username = row.get("username");
+                String courseCode = row.get("courseCode");
+
+                RefundMessage msg = new RefundMessage(Connector.getNextId(), 
+                        username, courseCode);
+                Connector.getSocket().sendMessage(msg);
+                AckMessage reply = (AckMessage) Connector.getSocket().receiveMessage();
+
+                if((Boolean) reply.getContent().get(AckMessage.VALUE)) {
+                    //refund processed successfully
+                    feedback.setText("Refund given.");
+                }
+                else {
+                    //refund processed unsuccessfully
+                    feedback.setText("Refund transaction failed. There may have been a "
+                            + "network or server fault. Please contact the system "
+                            + "administrator as soon as possible.");
+                }
+            }
+            else if(tableType == TableEnum.COURSES) {
+                //editing selected course details
+                HashMap<String, String> row = extractSelectedRow();
+                MainFrame.getInstance().changeContents(new CourseChangePane(row));
+            }
+            else if(tableType == TableEnum.LECTURERS) {
+                //editing selected lecturer details
+                HashMap<String, String> row = extractSelectedRow();
+                MainFrame.getInstance().changeContents(new LecturerChangePane(row));
+            }
+            else if(tableType == TableEnum.UNREPLIED_MESSAGES) {
+                //reply to selected message
+                HashMap<String, String> row = extractSelectedRow();
+                MainFrame.getInstance().changeContents(new ReplyPanel(row));
             }
             else {
-                //refund processed unsuccessfully
-                feedback.setText("Refund transaction failed. There may have been a "
-                        + "network or server fault. Please contact the system "
-                        + "administrator as soon as possible.");
+                //send error about button being used with no function
+                ErrorLogger.get().log("Context-sensitive button hit for table of type " + 
+                        tableType.name() + " but no code was found for it.");
             }
         }
-        else if(tableType == TableEnum.COURSES) {
-            //editing selected course details
-            HashMap<String, String> row = extractSelectedRow();
-            MainFrame.getInstance().changeContents(new CourseChangePane(row));
-        }
-        else if(tableType == TableEnum.LECTURERS) {
-            //editing selected lecturer details
-            HashMap<String, String> row = extractSelectedRow();
-            MainFrame.getInstance().changeContents(new LecturerChangePane(row));
-        }
-        else if(tableType == TableEnum.UNREPLIED_MESSAGES) {
-            //reply to selected message
-            HashMap<String, String> row = extractSelectedRow();
-            MainFrame.getInstance().changeContents(new ReplyPanel(row));
-        }
         else {
-            //send error about button being used with no function
-            ErrorLogger.get().log("Context-sensitive button hit for table of type " + 
-                    tableType.name() + " but no code was found for it.");
+            //no selection
+            feedback.setText("Please select a row.");
         }
     }//GEN-LAST:event_contextButtonActionPerformed
 
