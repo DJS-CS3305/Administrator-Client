@@ -16,7 +16,8 @@ public enum TableEnum {
     LECTURERS("SELECT * FROM Lecturers;", "Edit Lecturer Details...", "name"), 
     USERS("SELECT * FROM Users;", "", "username"), 
     UNREPLIED_MESSAGES("SELECT * FROM UnrepliedUserMessages;", "Reply...", "username"),
-    REGISTRATIONS("SELECT * FROM Registrations WHERE daysRemaining > 0;", 
+    REGISTRATIONS("SELECT username, courseCode, daysRemaining, hasStarted, "
+            + "hasPaid, wasRefunded FROM Registrations WHERE daysRemaining > 0;", 
             "Give Refund...", "courseCode");
     
     private String query;

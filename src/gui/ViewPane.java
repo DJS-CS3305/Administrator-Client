@@ -9,6 +9,8 @@ import log.ErrorLogger;
 import net.Connector;
 import net.QueryMessage;
 import net.ResultMessage;
+import net.RefundMessage;
+import net.AckMessage;
 
 /**
  * Class for viewing the results of a database search through a GUI.
@@ -111,6 +113,7 @@ public class ViewPane extends javax.swing.JPanel {
 
         contextPane = new javax.swing.JPanel();
         contextButton = new javax.swing.JButton();
+        feedback = new javax.swing.JLabel();
         tablePane = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
 
@@ -132,13 +135,17 @@ public class ViewPane extends javax.swing.JPanel {
             .addGroup(contextPaneLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(contextButton)
+                .addGap(18, 18, 18)
+                .addComponent(feedback)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         contextPaneLayout.setVerticalGroup(
             contextPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contextPaneLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(contextButton)
+                .addGroup(contextPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(contextButton)
+                    .addComponent(feedback))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -168,6 +175,25 @@ public class ViewPane extends javax.swing.JPanel {
         
         if(tableType == TableEnum.REGISTRATIONS) {
             //giving refunds
+            HashMap<String, String> row = extractSelectedRow();
+            String username = row.get("username");
+            String courseCode = row.get("courseCode");
+            
+            RefundMessage msg = new RefundMessage(Connector.getNextId(), 
+                    username, courseCode);
+            Connector.getSocket().sendMessage(msg);
+            AckMessage reply = (AckMessage) Connector.getSocket().receiveMessage();
+            
+            if((Boolean) reply.getContent().get(AckMessage.VALUE)) {
+                //refund processed successfully
+                feedback.setText("Refund given.");
+            }
+            else {
+                //refund processed unsuccessfully
+                feedback.setText("Refund transaction failed. There may have been a "
+                        + "network or server fault. Please contact the system "
+                        + "administrator as soon as possible.");
+            }
         }
         else if(tableType == TableEnum.COURSES) {
             //editing selected course details
@@ -194,6 +220,7 @@ public class ViewPane extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton contextButton;
     private javax.swing.JPanel contextPane;
+    private javax.swing.JLabel feedback;
     private javax.swing.JTable table;
     private javax.swing.JScrollPane tablePane;
     // End of variables declaration//GEN-END:variables
