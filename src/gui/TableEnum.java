@@ -46,9 +46,10 @@ public enum TableEnum {
             return input;
         }
     }, 
-    USERS("SELECT * FROM Users;", "", new String[]{"username", "email", 
-          "firstName", "surname", "gender", "age", "streetAddr", "townAddr",
-          "stateAddr", "countryAddr", "telNo", "isAdmin", "password"}) {
+    USERS("SELECT * FROM Users;", "Set/Revoke Administrator Privileges", 
+            new String[]{"username", "email", "firstName", "surname", "gender", 
+                "age", "streetAddr", "townAddr", "stateAddr", "countryAddr", 
+                "telNo", "isAdmin", "password"}) {
         @Override
         public String translateForDisplay(String input, String heading) {
             String output;

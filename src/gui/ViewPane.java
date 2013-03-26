@@ -207,6 +207,17 @@ public class ViewPane extends javax.swing.JPanel {
                 HashMap<String, String> row = extractSelectedRow();
                 MainFrame.getInstance().changeContents(new ReplyPanel(row));
             }
+            else if(tableType == TableEnum.USERS) {
+                HashMap<String, String> row = extractSelectedRow();
+                String username = row.get("username");
+                boolean isAdmin = (row.get("isAdmin").equals("Yes"));
+                QueryMessage msg = new QueryMessage(Connector.getNextId(), 
+                        "UPDATE Users SET isAdmin = " + ((isAdmin) ? "FALSE" : 
+                        "TRUE") + " WHERE username = '" + username + "';");
+                Connector.getSocket().sendMessage(msg);
+                feedback.setText("Admin privileges " + ((isAdmin) ? "revoked" : 
+                        "added") + ".");
+            }
             else {
                 //send error about button being used with no function
                 ErrorLogger.get().log("Context-sensitive button hit for table of type " + 
