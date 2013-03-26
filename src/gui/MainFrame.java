@@ -50,6 +50,7 @@ public class MainFrame extends javax.swing.JFrame {
         addLecturerMenuItem = new javax.swing.JMenuItem();
         managementMenu = new javax.swing.JMenu();
         messageInboxMenuItem = new javax.swing.JMenuItem();
+        maintenanceMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("UCC Summer Courses Office Administrator Tool");
@@ -141,6 +142,14 @@ public class MainFrame extends javax.swing.JFrame {
         });
         managementMenu.add(messageInboxMenuItem);
 
+        maintenanceMenuItem.setText("Set Maintenance Time...");
+        maintenanceMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                maintenanceMenuItemActionPerformed(evt);
+            }
+        });
+        managementMenu.add(maintenanceMenuItem);
+
         menuBar.add(managementMenu);
 
         setJMenuBar(menuBar);
@@ -196,6 +205,10 @@ public class MainFrame extends javax.swing.JFrame {
         contents.setViewportView(new ViewPane(TableEnum.UNREPLIED_MESSAGES));
     }//GEN-LAST:event_messageInboxMenuItemActionPerformed
 
+    private void maintenanceMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintenanceMenuItemActionPerformed
+        contents.setViewportView(new MaintenancePane());
+    }//GEN-LAST:event_maintenanceMenuItemActionPerformed
+
     /**
      * Sets all connection-reliant menu items to a given state.
      * 
@@ -210,6 +223,7 @@ public class MainFrame extends javax.swing.JFrame {
         messageInboxMenuItem.setEnabled(enabled);
         addCourseMenuItem.setEnabled(enabled);
         addLecturerMenuItem.setEnabled(enabled);
+        maintenanceMenuItem.setEnabled(enabled);
     }
     
     /**
@@ -268,6 +282,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenu connectionMenu;
     private javax.swing.JScrollPane contents;
     private javax.swing.JMenuItem disconnectMenuItem;
+    private javax.swing.JMenuItem maintenanceMenuItem;
     private javax.swing.JMenu managementMenu;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem messageInboxMenuItem;
