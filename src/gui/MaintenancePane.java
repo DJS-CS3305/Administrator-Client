@@ -15,7 +15,7 @@ import net.MaintenanceMessage;
  * @author saf3
  */
 public class MaintenancePane extends javax.swing.JPanel {
-    private static SimpleDateFormat FORMAT = new SimpleDateFormat("dd/mm/yyyy/hh/MM");
+    private static SimpleDateFormat FORMAT = new SimpleDateFormat("dd/MM/yyyy/hh/mm");
     
     /**
      * Creates new form MaintenancePane
