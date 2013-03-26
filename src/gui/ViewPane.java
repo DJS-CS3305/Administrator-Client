@@ -63,7 +63,9 @@ public class ViewPane extends javax.swing.JPanel {
                 String[] data = new String[headings.size()];
                 
                 for(int j = 0; j < headings.size(); j++) {
-                    data[j] = row.get(headings.get(j));
+                    String heading = headings.get(j);
+                    data[j] = tableType.translateForDisplay(row.get(heading), 
+                            heading);
                 }
                 
                 model.addRow(data);
