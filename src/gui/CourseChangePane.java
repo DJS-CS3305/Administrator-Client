@@ -518,13 +518,20 @@ public class CourseChangePane extends javax.swing.JPanel implements AcceptsInser
             exists = (existResults.isConstructed() &&
                     existResults.getContent().get(ResultMessage.RESULTS) != null);
             
+            //sanitize raw strings
+            lecturer = SQLSanitize.sanitize(lecturer);
+            location = SQLSanitize.sanitize(location);
+            description = SQLSanitize.sanitize(description);
+            name = SQLSanitize.sanitize(name);
+            code = SQLSanitize.sanitize(code);
+            
             //construct query
             String query = "";
             
             if(exists) {
                 query += "UPDATE Courses SET lecturer = '" + lecturer + 
                         "', location = '" + location + "', fee = " + fee + 
-                        ", description = '" + sanitize(description) + "', " + 
+                        ", description = '" + description + "', " + 
                         "startDate = '" + startDateString + "', courseDuration = " + 
                         courseLength + ", classDuration = " + classLength + 
                         ", capacity = " + capacity + ", startTime = '" + 
@@ -534,7 +541,7 @@ public class CourseChangePane extends javax.swing.JPanel implements AcceptsInser
             else {
                 query += "INSERT INTO Courses VALUES ('" + code + "', '" + name + 
                         "', '" + lecturer + "', '" + location + "', " + fee + 
-                        ", '" + sanitize(description) + "', '" + startDateString + 
+                        ", '" + description + "', '" + startDateString + 
                         "', " + courseLength + ", " + classLength + ", " + capacity + 
                         ", '" + startTimeString + "', 0);";
             }
@@ -576,19 +583,6 @@ public class CourseChangePane extends javax.swing.JPanel implements AcceptsInser
     @Override
     public void insert(String insertion) {
         descriptionField.insert(insertion, descriptionField.getCaretPosition());
-    }
-    
-    /**
-     * Sanitizes the description into an SQL-friendly form by replacing all
-     * quotes and double quotes with escape character versions.
-     * 
-     * @param description
-     * @return 
-     */
-    private String sanitize(String description) {
-        String output = description.replaceAll("\"", "\\\"");
-        output = output.replaceAll("'", "\\'");
-        return output;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

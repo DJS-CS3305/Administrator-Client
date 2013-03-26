@@ -50,15 +50,7 @@ public class ViewPane extends javax.swing.JPanel {
             DefaultTableModel model = new DefaultTableModel();
             
             //get headings
-            LinkedList<String> headings = new LinkedList<String>();
-            for(String heading : resultList.getFirst().keySet()) {
-                headings.add(heading);
-            }
-            
-            //sort headings
-            Collections.sort(headings);
-            headings.remove(tableType.getKey());
-            headings.addFirst(tableType.getKey());
+            LinkedList<String> headings = tableType.getHeadingsOrder();
             
             //add headings to model
             for(String heading : headings) {

@@ -65,3 +65,6 @@ SEVERE:
 Mar 19, 2013 10:30:16 AM log.AbstractLogger log
 SEVERE: 
 	Tue Mar 19 10:30:16 GMT 2013 - java.net.SocketException: Connection reset
+26-Mar-2013 09:21:34 log.AbstractLogger log
+SEVERE: 
+	Tue Mar 26 09:21:34 GMT 2013 - java.net.ConnectException: Connection refused: connect

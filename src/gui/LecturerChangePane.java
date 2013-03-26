@@ -208,12 +208,13 @@ public class LecturerChangePane extends javax.swing.JPanel implements AcceptsIns
         String query;
         
         if(exists) {
-            query = "UPDATE Lecturers SET description = '" + sanitize(description) + 
-                    "' WHERE name = '" + name + "';";
+            query = "UPDATE Lecturers SET description = '" + 
+                    SQLSanitize.sanitize(description) + "' WHERE name = '" + 
+                    SQLSanitize.sanitize(name) + "';";
         }
         else {
-            query = "INSERT INTO Lecturers VALUES ('" + name + "', '" + 
-                    sanitize(description) + "');";
+            query = "INSERT INTO Lecturers VALUES ('" + SQLSanitize.sanitize(name)
+                    + "', '" + SQLSanitize.sanitize(description) + "');";
         }
         
         qm = new QueryMessage(Connector.getNextId(), query);
@@ -251,19 +252,6 @@ public class LecturerChangePane extends javax.swing.JPanel implements AcceptsIns
     @Override
     public void insert(String insertion) {
         descriptionField.insert(insertion, descriptionField.getCaretPosition());
-    }
-    
-    /**
-     * Sanitizes the description into an SQL-friendly form by replacing all
-     * quotes and double quotes with escape character versions.
-     * 
-     * @param description
-     * @return 
-     */
-    private String sanitize(String description) {
-        String output = description.replaceAll("\"", "\\\"");
-        output = output.replaceAll("'", "\\'");
-        return output;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

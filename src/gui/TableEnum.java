@@ -1,7 +1,6 @@
 package gui;
 
-//import java.util.List;
-//import java.util.Iterator;
+import java.util.LinkedList;
 
 /**
  * Enumerator for different tables in the View Pane. These types hold the
@@ -12,18 +11,26 @@ package gui;
  * @author Stephen Fahy
  */
 public enum TableEnum {
-    COURSES("SELECT * FROM Courses;", "Edit Course Details...", "code"), 
-    LECTURERS("SELECT * FROM Lecturers;", "Edit Lecturer Details...", "name"), 
-    USERS("SELECT * FROM Users;", "", "username"), 
-    UNREPLIED_MESSAGES("SELECT * FROM UnrepliedUserMessages;", "Reply...", "username"),
+    COURSES("SELECT * FROM Courses;", "Edit Course Details...", 
+            new String[]{"code", "name", "lecturer", "location", "fee", 
+            "startDate", "courseDuration", "classDuration", "capacity", 
+            "startTime", "description", "hits"}), 
+    LECTURERS("SELECT * FROM Lecturers;", "Edit Lecturer Details...",
+            new String[]{"name", "description"}), 
+    USERS("SELECT * FROM Users;", "", new String[]{"username", "email", 
+          "firstName", "surname", "gender", "age", "streetAddr", "townAddr",
+          "stateAddr", "countryAddr", "telNo", "isAdmin", "password"}), 
+    UNREPLIED_MESSAGES("SELECT * FROM UnrepliedUserMessages;", "Reply...",
+            new String[]{"username", "content"}),
     REGISTRATIONS("SELECT username, courseCode, daysRemaining, hasStarted, "
             + "hasPaid, wasRefunded FROM Registrations WHERE daysRemaining > 0;", 
-            "Give Refund...", "courseCode");
+            "Give Refund...", new String[]{"courseCode", "username", "hasStarted", 
+            "hasPaid", "wasRefunded", "daysRemaining"});
     
     private String query;
     private String buttonText;
     private boolean buttonEnabled;
-    private String key;
+    private String[] ordering;
     
     /**
      * Constructor.
@@ -31,17 +38,12 @@ public enum TableEnum {
      * @param buttonText Text of the context-sensitive button; null for disabled.
      * @param key A key of the table that will be the first column in the display.
      */
-    private TableEnum(String query, String buttonText, String key) {
+    private TableEnum(String query, String buttonText, String[] ordering) {
         this.query = query;
         this.buttonText = buttonText;
         this.buttonEnabled = !(buttonText.equals(""));
-        this.key = key;
+        this.ordering = ordering;
     }
-    
-    /**
-     * Performs the action for the context-sensitive button.
-     */
-    //public abstract void action(List<String> arguments);
     
     //getters
     public String getButtonText() {
@@ -53,7 +55,13 @@ public enum TableEnum {
     public boolean isButtonEnabled() {
         return buttonEnabled;
     }
-    public String getKey() {
-        return key;
+    public LinkedList<String> getHeadingsOrder() {
+        LinkedList<String> output = new LinkedList<String>();
+        
+        for(String heading : ordering) {
+            output.add(heading);
+        }
+        
+        return output;
     }
 }
